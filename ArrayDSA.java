@@ -1,4 +1,4 @@
-package DSAAlgorithm;
+
 public class ArrayDSA {
     
 public static void UnionArray(int[] arr,int[] ar2){
