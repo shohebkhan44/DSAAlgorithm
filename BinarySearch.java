@@ -8,7 +8,7 @@ int low=0;
 int high=size-1;
   while (low<=high) {
 
-    int mid=low+high/2;
+    int mid = (low + high ) / 2;
     if(arr[mid]==target)
     {
         return mid;
@@ -27,10 +27,10 @@ int high=size-1;
 public static void main(String[] args) {
     int array[]={1,3,5,6,7,9,12,79};
     int target=9;
+    int ans=BinarySearch(target,array);
+
+    System.out.println("the elemnt found at index  "+ans);
     
-   
-    System.out.println("the elemnt found is  "+BinarySearch(target,array));
-    System.out.println("exception error foun bro");
     
 }
 
