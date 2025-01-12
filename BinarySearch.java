@@ -30,8 +30,8 @@ int high=size-1;
 
 
 public static void main(String[] args) {
-    int array[]={1,3,5,6,7,9,12,79};
-      int target=9;
+    int array[]={1,3,5,6,7,9,12,79,56,78};
+      int target=78;
     int ans=BinarySearch(target,array);
 
     System.out.println("the elemnt found at index"+ ans);
