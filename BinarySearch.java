@@ -7,25 +7,23 @@ int low=0;
 int size=arr.length;
 int high=size-1;
 
-
-  while (low<=high) 
+while (low<=high)
+ {
+  int mid=(low+high)/2;
+  if(mid==target)
   {
-    int mid=(low+high)/2;
-     if(arr[mid]==target)
-     {
-      return mid;
-     }
-     else if(target<arr[mid])
-     {
-          high=mid-1;
-     }
-     else
-     {
-      low=mid+1;
-     }
-  
+    return arr[mid];
   }
-  return -1;
+  else if(target>arr[mid])
+  {
+          high=mid-1;
+  }
+  else{
+    low=mid+1;
+  }
+  
+}
+ return -1;
 }
 
 
@@ -36,8 +34,6 @@ public static void main(String[] args) {
     int ans=BinarySearch(target,array);
    System.out.println("ur element");
     System.out.println("the elemnt found at index"+ ans);
-    
-    
 }
 
 }
