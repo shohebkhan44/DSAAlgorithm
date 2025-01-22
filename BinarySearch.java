@@ -10,16 +10,17 @@ int high=size-1;
 while (low<=high)
  {
   int mid=(low+high)/2;
-  if(mid==target)
+  if(arr[mid]==target)
   {
     return arr[mid];
   }
-  else if(target>arr[mid])
+  else if(target<arr[mid])
   {
-          high=mid-1;
+          
+          low=mid+1;
   }
   else{
-    low=mid+1;
+    high=mid-1;
   }
   
 }
@@ -28,12 +29,16 @@ while (low<=high)
 
 
 public static void main(String[] args) {
-    int array[]={1,3,5,6,7,9,12,79,87};
+    int array[]={1,3,5,6,7,9,12,79,87,89};
       int target=79;
 
     int ans=BinarySearch(target,array);
    System.out.println("ur element");
     System.out.println("the elemnt found at index"+ ans);
+
+
+
+
 }
 
 }
