@@ -29,7 +29,7 @@ while (low<=high)
 
 
 public static void main(String[] args) {
-    int array[]={1,3,5,6,7,9,12,79,87,89};
+    int array[]={1,3,5,6,7,9,12,79,87,89,989};
       int target=79;
 
     int ans=BinarySearch(target,array);
