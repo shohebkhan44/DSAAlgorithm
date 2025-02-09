@@ -10,7 +10,7 @@ public class StringsJava {
         //turning a character array to a string
         char[] charr={'a','a','r','o'};
         String strr="Hello";
-        String strr2=new String("Hello");
+        String strr2=new String("Hellooo");
 
         String arrtostr=null;
         arrtostr=arrtostr.copyValueOf(charr,0,4);
