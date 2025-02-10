@@ -2,7 +2,7 @@
 public class StringsJava {
 
     public static void main(String[] args) {
-        String str="football";
+        String str="football is sport";
         //charAt() method return char
         char ch=str.charAt(3);
         System.out.println("the char at 3" + ch);
@@ -27,6 +27,7 @@ public class StringsJava {
         }
         else{
             System.out.println("they are not equal");
+
         }
         //System.out.println(strr.split('%e'));
         System.out.println(strr.trim());
