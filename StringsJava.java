@@ -4,8 +4,8 @@ public class StringsJava {
     public static void main(String[] args) {
         String str="football is sport";
         //charAt() method return char
-        char ch=str.charAt(3);
-        System.out.println("the char at 3" + ch);
+        char ch=str.charAt(9);
+        System.out.println("the char at 9"+  ch);
 
         //turning a character array to a string
         char[] charr={'a','a','r','o'};
@@ -27,7 +27,6 @@ public class StringsJava {
         }
         else{
             System.out.println("they are not equal");
-
         }
         //System.out.println(strr.split('%e'));
         System.out.println(strr.trim());
@@ -37,7 +36,7 @@ public class StringsJava {
 StringBuilder sb=new StringBuilder("football");
 sb.append('c');
 System.out.println(sb);
-
+System.out.println("DSA");
 
     }
 }
