@@ -104,29 +104,60 @@ arr[arr.length-i-1]=temp;
 
 //pattern-6
 
-for(int i=5;i>0;i--){
-  for(int j=1;j<=i;j++)
-  {
-    System.out.print(j);
-  }
-  System.out.println();
-}
+// for(int i=5;i>0;i--){
+//   for(int j=1;j<=i;j++)
+//   {
+//     System.out.print(j);
+//   }
+//   System.out.println();
+// }
 
 //pattern-7
 
-// for(int i=5;i>0;i--){
-//   for(int j=1;j<=i-1;j++)
+// for(int i=0;i<=5;i++)
+// {
+//   //space
+//   for(int j=0;j<=5-i-1;j++)
 //   {
 //     System.out.print(" ");
 //   }
+//    star
 //       for(int k=0;k<i*2+1;k++){
 //         System.out.print('*');
 //       }
-    
+ /// space
+//       for(int l=0;l<=5-i-1;l++)
+//   {
+//     System.out.print(" ");
 //   }
-  //System.out.println();
+//     System.out.println();
+//   }
+
+  //pattern-8
+
+  for(int i=0;i<=5;i++)
+{
+//space
+  for(int j=0;j<=i;j++)
+  {
+    System.out.print(" ");
+  }
+  //star
+//5 can be replaced with n;
+  for(int k=0;k<10-2*i-1;k++){
+    System.out.print('*');
+  }
+ //space
+     
+ for(int l=0;l<=5-i-1;l++)
+  {
+    System.out.print(" ");
+  }
+    System.out.println();
+  }
+  
 }
 
 
     }
-  }
+  
