@@ -1,7 +1,8 @@
 public class Recursions {
     public static void main(String[] args) {
         int[] arr={1,2,3,4};
-        String str="mamamamamamamm";
+        String str="hello";
+        String str1="mamamamamamamm";
         printNumber(4);
         printNames("great", 4);
         Print1toN(1,4);
