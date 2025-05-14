@@ -6,6 +6,7 @@ public class Digits {
     
     public static void main(String[] args) {
         System.out.println("Count of  digits are");
+        System.out.println("hi");
         System.out.println(digit(23456));
         System.out.println(Reversedigit(23456));
         System.err.println(palindrome(125210));
