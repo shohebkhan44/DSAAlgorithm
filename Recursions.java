@@ -5,7 +5,7 @@ public class Recursions {
         String str1="mamamamamamamm";
         String str2="fooo";
         printNumber(4);
-        printNames("great", 4);
+        printNames("greattt", 4);
         Print1toN(1,4);
         PrintSum(0,5);
         ReverseArray(0,arr,arr.length);
