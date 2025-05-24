@@ -91,17 +91,35 @@ int j=0;
     }
     return arr;
 }
-
+static int consecutiveOnes(int[] arr){
+    int max=0;
+    int counter=0;
+    for(int i=0;i<arr.length;i++){
+        if(arr[i]==1){
+            counter+=1;
+        }
+        else {
+        if(counter >max){
+            max=counter;
+            counter=0;
+        }
+    }
+    }
+    return max;
+}
 
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
         int[] ar2={1,1,2,2,2,2,3,4,5,9,7,13};
         int [] ar3={1,4,0,5,4,9,12,0};
+        int [] ar4={0};
         // Set<Integer> st=new HashSet<>();
         // for(int i=0;i<ar2.length;i++){
         //     //to insert into a set TC=nlogn
-        //     st.add(ar2[i]);
+        //     st.add(ar2[i]);  
         // }
+        System.out.println("Count of consecutive ones"   + consecutiveOnes(ar4));
+       
         System.out.println("arrays wth xeroes at end");
         
         for (int i : shiftZeroes(ar3)) {
