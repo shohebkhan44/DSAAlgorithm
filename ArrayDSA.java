@@ -110,7 +110,7 @@ static int consecutiveOnes(int[] arr){
 
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
-        int[] ar2={1,1,2,2,2,2,3,4,5,9,7,13};
+        int[] ar2={1,1,2,2,2,2,3,4,5,9,7,13,14};
         int [] ar3={1,4,0,5,4,9,12,0};
         int [] ar4={0};
         // Set<Integer> st=new HashSet<>();
