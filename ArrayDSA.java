@@ -107,10 +107,35 @@ static int consecutiveOnes(int[] arr){
     }
     return max;
 }
+//SubArray with Sum K
+static int SubArrayWithSum(int arr[],int k){
+ int sum=0,counter=0,max=0;
+for(int i=0;i<arr.length;i++)
+{
+    
+
+    if(arr[i]<=k && sum<k && sum!=k)
+    {
+        sum+=arr[i];
+        counter++;
+    }
+    else{
+        if(counter > max){
+              max=counter;
+               counter=0;
+                sum=0;
+        }
+       
+       
+    }
+}
+return max;
+
+}
 
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
-        int[] ar2={1,1,2,2,2,2,3,4,5,9,7,13,14};
+        int[] ar2={1,2,3,1,1,1,4,2,3};
         int [] ar3={1,4,0,5,4,9,12,0};
         int [] ar4={0};
         // Set<Integer> st=new HashSet<>();
@@ -118,6 +143,7 @@ static int consecutiveOnes(int[] arr){
         //     //to insert into a set TC=nlogn
         //     st.add(ar2[i]);  
         // }
+        System.out.println("Longest Subarray is " + SubArrayWithSum(ar2, 5));
         System.out.println("Count of consecutive ones"   + consecutiveOnes(ar4));
        
         System.out.println("arrays wth xeroes at end");
