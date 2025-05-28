@@ -112,8 +112,6 @@ static int SubArrayWithSum(int arr[],int k){
  int sum=0,counter=0,max=0;
 for(int i=0;i<arr.length;i++)
 {
-    
-
     if(arr[i]<=k && sum<k && sum!=k)
     {
         sum+=arr[i];
@@ -125,17 +123,41 @@ for(int i=0;i<arr.length;i++)
                counter=0;
                 sum=0;
         }
-       
-       
     }
-}
-return max;
-
+}return max;
 }
 
+
+//two sum
+
+static boolean twoSum(int[] arr,int k){
+    //bruteforceApproach
+    // for(int i=0;i<arr.length;i++){
+    //     for(int j=i;j<arr.length;j++){
+    //         if(arr[i]+arr[j]==k){
+    //             return new int[]{i,j};
+    //         }
+    //     }
+    // }
+    //  return new int[]{-1,-1};
+
+    //optimalApproach
+    //optimalApproach
+int left=0,right=arr.length-1;
+while(left<right){
+
+    if(arr[left]+arr[right]==k){
+        return true;
+    }
+    else if(arr[left]<k-arr[right]){
+        left++;
+    }
+    
+}return false;
+}
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
-        int[] ar2={1,2,3,1,1,1,4,2,3};
+        int[] ar2={1,2,3,1,1,-1,4,-2,3};
         int [] ar3={1,4,0,5,4,9,12,0};
         int [] ar4={0};
         // Set<Integer> st=new HashSet<>();
@@ -143,7 +165,13 @@ return max;
         //     //to insert into a set TC=nlogn
         //     st.add(ar2[i]);  
         // }
+        //System.out.println(twoSum(ar, 12));
+        //  for (int i : twoSum(ar, 12)) {
+        //     System.out.println(i);
+        // }
+
         System.out.println("Longest Subarray is " + SubArrayWithSum(ar2, 5));
+       
         System.out.println("Count of consecutive ones"   + consecutiveOnes(ar4));
        
         System.out.println("arrays wth xeroes at end");
