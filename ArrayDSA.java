@@ -155,11 +155,38 @@ while(left<right){
     
 }return false;
 }
+
+static int[] SortedZeroesOnestwos(int[] arr){
+    //Dutch national flag algorithm
+    int low=0,high=0,mid=0,temp=0;
+    for(int i=0;i<arr.length;i++){
+
+if(arr[mid]==0){
+    arr[low]=temp;
+    arr[mid]=arr[low];
+    arr[mid]=temp;
+    low++;
+    mid++;
+
+}
+else if(arr[mid]==1){
+    mid++;
+}
+else{
+      arr[mid]=temp;
+    arr[high]=arr[mid];
+    arr[high]=temp;
+    high--;
+}
+    }
+    return arr;
+}
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
         int[] ar2={1,2,3,1,1,-1,4,-2,3};
         int [] ar3={1,4,0,5,4,9,12,0};
         int [] ar4={0};
+        int[] ar5={1,0,1,0,2,2,1,0,1,2,0,0,0,1,2,2,1};
         // Set<Integer> st=new HashSet<>();
         // for(int i=0;i<ar2.length;i++){
         //     //to insert into a set TC=nlogn
@@ -169,7 +196,10 @@ while(left<right){
         //  for (int i : twoSum(ar, 12)) {
         //     System.out.println(i);
         // }
-
+// System.out.println("The sorted array STH_Algo");
+//  for (int i : SortedZeroesOnestwos(ar5)) {
+//             System.out.print(" " +i);
+//         }
         System.out.println("Longest Subarray is " + SubArrayWithSum(ar2, 5));
        
         System.out.println("Count of consecutive ones"   + consecutiveOnes(ar4));
