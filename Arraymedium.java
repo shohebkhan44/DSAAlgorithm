@@ -45,7 +45,8 @@ public class Arraymedium {
 //Time complexity O(1)
 int counter=0;
 int element=arr[0];
-for(int i=0;i<arr.length;i++){
+for(int i=0;i<arr.length;i++)
+{
 if(counter==0){
     counter=1;
     element=arr[i];
@@ -57,12 +58,40 @@ else{
  counter++;
 }
 }
+int ct=0;
+for(int i=0;i<arr.length;i++){
+    if(arr[i]==element){
+        ct++;
+    }
+}
+if(ct>arr.length/2){
 return element;
 }
-
+else{
+    return -1;
+}
+}
+//kadanes algorithm
+static int MaxSubarraySum(int[] arr){
+int sum=0,max=-9999;
+    for(int i=0;i<arr.length;i++){
+      sum+=arr[i];
+       if(sum<0){
+            sum=0;
+        }
+        else {
+            if(sum>max){
+            max=sum;
+            }
+        }    
+    } 
+    return max;
+}
 public static void main(String[] args) {
-     int[] ar5={1,2,3,4,1,1,1,1,6,7,3,1};
+     int[] ar5={1,2};
+     int[] ar2={-2,-3,4,-1,-2,1,5,-3};
      System.out.println("majority element"+majorityElement(ar5));
+     System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
     
 }
