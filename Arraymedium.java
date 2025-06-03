@@ -73,9 +73,12 @@ else{
 }
 //kadanes algorithm
 static int MaxSubarraySum(int[] arr){
-int sum=0,max=-9999;
+int sum=0,max=-9999,istart;
     for(int i=0;i<arr.length;i++){
       sum+=arr[i];
+      if(sum==0){
+        istart=i;
+      }
        if(sum<0){
             sum=0;
         }
@@ -89,7 +92,8 @@ int sum=0,max=-9999;
 }
 public static void main(String[] args) {
      int[] ar5={1,2};
-     int[] ar2={-2,-3,4,-1,-2,1,5,-3};
+     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4
+    };
      System.out.println("majority element"+majorityElement(ar5));
      System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
