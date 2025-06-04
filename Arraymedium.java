@@ -90,10 +90,37 @@ int sum=0,max=-9999,istart;
     } 
     return max;
 }
+static int BuysellStock(int[] arr){
+  //TC=O(n2)
+    // int profit=0,maxprofit=0;
+    // for(int i=0;i<arr.length;i++){
+    //     for(int j=arr.length-1-i;j>0;j--){
+    //         profit=arr[j]-arr[i];
+    //         if(profit>maxprofit){
+    //              maxprofit=profit;
+    //         }
+    //     }
+    // }
+    // return maxprofit;
+    int min=arr[0],max=-1,profit=0;
+    //TC=O(n).
+   for(int i=1;i<arr.length;i++){
+
+       profit=arr[i]-min;
+
+if(profit>max){
+    max=profit;
+}
+min=Math.min(min, arr[i]);
+
+}
+
+    return max;
+}
 public static void main(String[] args) {
-     int[] ar5={1,2};
-     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4
-    };
+     int[] ar5={7,1,5,3,6,4};
+     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4};
+     System.out.println("maxprofit" +" "+BuysellStock(ar5));
      System.out.println("majority element"+majorityElement(ar5));
      System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
