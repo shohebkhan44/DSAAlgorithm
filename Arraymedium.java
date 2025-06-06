@@ -119,7 +119,7 @@ min=Math.min(min, arr[i]);
 }
 public static void main(String[] args) {
      int[] ar5={7,1,5,3,6,4};
-     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4,6,7};
+     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4,6,78,7};
      System.out.println("maxprofit" +" "+BuysellStock(ar5));
      System.out.println("majority element"+majorityElement(ar5));
      System.out.println(MaxSubarraySum(ar2));
