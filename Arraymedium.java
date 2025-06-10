@@ -117,13 +117,34 @@ min=Math.min(min, arr[i]);
 
     return max;
 }
+//Rearrange array
+
+static void Rearrange(int arr[]){
+//not wrking hv to trace back
+    for(int i=0;i<arr.length;i++){
+        if(i%2==0){
+System.out.print(arr[i]);
+        }
+        else if(arr[i]<0){
+             System.out.print(arr[i]);
+        }
+        else{
+            int temp=arr[i];
+            arr[i+1]=arr[i];
+            arr[i+1]=temp;
+           
+        }
+    }
+
+}
 public static void main(String[] args) {
      int[] ar5={7,1,5,3,6,4};
-     int[] ar2={-2,-3,4,-1,-2,1,5,-3,3,4,6,78,7};
-     System.out.println("maxprofit" +" "+BuysellStock(ar5));
-     System.out.println("majority element"+majorityElement(ar5));
-     System.out.println(MaxSubarraySum(ar2));
+     int[] ar2={3,,-2,-5,2,-9};
+     //System.out.println("maxprofit" +" "+BuysellStock(ar5));
+     //System.out.println("majority element"+majorityElement(ar5));
+     Rearrange(ar2);
+     //System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
     
 }
-}
+}1
