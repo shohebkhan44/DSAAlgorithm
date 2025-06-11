@@ -137,14 +137,44 @@ System.out.print(arr[i]);
     }
 
 }
+
+//longest Common Subsequence
+
+static int LongestSubseq(int arr[]){
+
+    int cnt=0,x=0,max=0;;
+    for(int i=0;i<arr.length;i++){
+
+        x=arr[i];
+        cnt=1;
+        while(linearSearch(x+1,arr)==true){
+            cnt++;
+            x=x+1;
+        }
+       max=Math.max(max, cnt);
+        
+    }
+    return  max;
+}
+static boolean linearSearch(int ele, int arr[]){
+
+    for(int i=0;i<arr.length;i++){
+        if(arr[i]==ele){
+            return true;
+        }
+    }
+    return false;
+}
+
 public static void main(String[] args) {
      int[] ar5={7,1,5,3,6,4};
-     int[] ar2={3,,-2,-5,2,-9};
+     int[] ar2={102,4,100,1,101,3,2,1,1};
      //System.out.println("maxprofit" +" "+BuysellStock(ar5));
      //System.out.println("majority element"+majorityElement(ar5));
+     System.out.println(LongestSubseq(ar2));
      Rearrange(ar2);
      //System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
     
 }
-}1
+}
