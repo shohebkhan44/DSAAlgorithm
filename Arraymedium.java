@@ -166,15 +166,47 @@ static boolean linearSearch(int ele, int arr[]){
     return false;
 }
 
+// Function to compute nCr
+static int ncR(int n, int r) {
+    int ans = 1;
+
+    // Since nCr = nC(n-r)
+    r = Math.min(r, n - r);
+
+    for (int i = 1; i <= r; i++) {
+        ans = ans * (n - i + 1);
+        ans = ans / i;
+    }
+
+    return ans;
+}
+
+// Function to print the nth row of Pascal's Triangle (0-based)
+static void printRow(int n) {
+    for (int c = 0; c <=n; c++) {
+        System.out.print(ncR(n, c) + " ");
+    }
+    System.out.println();
+}
+//print pascal
+static void Printpascal(int rowSize){
+
+    for(int i=0;i<rowSize;i++){
+        printRow(i);
+    }
+}
 public static void main(String[] args) {
      int[] ar5={7,1,5,3,6,4};
-     int[] ar2={102,4,100,1,101,3,2,1,1};
+     int[] ar2={102,4,100,1,101,3,2,1,1,8,9};
      //System.out.println("maxprofit" +" "+BuysellStock(ar5));
      //System.out.println("majority element"+majorityElement(ar5));
-     System.out.println(LongestSubseq(ar2));
-     Rearrange(ar2);
+     //System.out.println(LongestSubseq(ar2));
+     //Rearrange(ar2);
+     printRow(6);
+     Printpascal(6);
      //System.out.println(MaxSubarraySum(ar2));
      //majorityElement(ar5);
     
 }
+
 }
