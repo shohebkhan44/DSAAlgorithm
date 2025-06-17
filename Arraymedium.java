@@ -76,9 +76,9 @@ static int MaxSubarraySum(int[] arr){
 int sum=0,max=-9999,istart;
     for(int i=0;i<arr.length;i++){
       sum+=arr[i];
-      if(sum==0){
-        istart=i;
-      }
+    //   if(sum==0){
+    //     istart=i;
+    //   }
        if(sum<0){
             sum=0;
         }
@@ -198,13 +198,14 @@ static void Printpascal(int rowSize){
 public static void main(String[] args) {
      int[] ar5={7,1,5,3,6,4};
      int[] ar2={102,4,100,1,101,3,2,1,1,8,9};
+     int[] ar3={1,-4,5,-6,5,-7,-7};
      //System.out.println("maxprofit" +" "+BuysellStock(ar5));
      //System.out.println("majority element"+majorityElement(ar5));
      //System.out.println(LongestSubseq(ar2));
      //Rearrange(ar2);
      printRow(6);
      Printpascal(6);
-     //System.out.println(MaxSubarraySum(ar2));
+     System.out.println(MaxSubarraySum(ar3));
      //majorityElement(ar5);
     
 }
