@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Arrayhard {
@@ -24,11 +25,56 @@ public static List<List<Integer>> threeSum(int[] arr) {
     // If no such triplet exists
     return result;
 }
-public static void main(String[] args) {
+
+public static int LenthofSubarraySum(int[] arr){
+// int sum=0,cnt=0,maxCnt=0;
+// for(int i=0;i<arr.length;i++){
+//     sum=0;
+//     for(int j=i;j<arr.length;j++){
+    
+//         sum+=arr[j];
+//         if(sum==0){
+//            // maxCnt=cnt;
+//             maxCnt=Math.max(maxCnt,j-i+1);
+            
+//         }
+
+//     }
+// }
+// return maxCnt;
+
+
+//using HAspmap
+
+
+
+    HashMap<Integer, Integer> map = new HashMap<>();
+    int maxLen = 0;
+    int sum = 0;
+
+    for (int i = 0; i < arr.length; i++) {
+        sum += arr[i];
+
+        if (sum == 0) {
+            maxLen = i + 1;
+        } else if (map.containsKey(sum)) {
+            maxLen = Math.max(maxLen, i - map.get(sum));
+        } else {
+            map.put(sum, i);
+        }
+    }
+
+    return maxLen;
+}
+
+
+public static void main (String[] args) {
     int[] nums = {-1,0,1,2,-1,-4};
+    int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3};
     // int[] num = Arrays.sort(nums);
     List<List<Integer>> result = threeSum(nums);
     System.out.println(result);
+     System.out.println(LenthofSubarraySum(arr2));
     
 }
 }
