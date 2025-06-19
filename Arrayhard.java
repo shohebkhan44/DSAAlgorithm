@@ -70,7 +70,7 @@ public static int LenthofSubarraySum(int[] arr){
 
 public static void main (String[] args) {
     int[] nums = {-1,0,1,2,-1,-4};
-    int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3};
+    int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3,7,9};
     // int[] num = Arrays.sort(nums);
     List<List<Integer>> result = threeSum(nums);
     System.out.println(result);
