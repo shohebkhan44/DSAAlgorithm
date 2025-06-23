@@ -67,14 +67,34 @@ public static int LenthofSubarraySum(int[] arr){
     return maxLen;
 }
 
+//BinarySearch
+public static int BinarySearch(int arr[],int target){
+int low=0,high=arr.length-1;
+
+    while(low<=high){
+    int mid=low+(high-low)/2;
+        if(arr[mid]==target){
+            return arr[mid];
+        }
+        if(arr[mid]<target)
+        {
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+        }
+    }
+    return -1;
+}
 
 public static void main (String[] args) {
-    int[] nums = {-1,0,1,2,-1,-4};
+    int[] nums = {1,5,7,9,12,24,36};
     int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3,7,9,10};
     // int[] num = Arrays.sort(nums);
     List<List<Integer>> result = threeSum(nums);
-    System.out.println(result);
-     System.out.println(LenthofSubarraySum(arr2));
+    //System.out.println(result);
+    // System.out.println(LenthofSubarraySum(arr2));
+     System.out.println(BinarySearch(nums,24));
     
 }
 }
