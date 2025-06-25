@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,15 +87,53 @@ int low=0,high=arr.length-1;
     }
     return -1;
 }
+//Overlapping Arrays
+
+public static List<int[]> findOverlapping(List<int[]> intervals)
+{
+   List<int[]> ans=new ArrayList<>();
+
+    // Sort by start time
+    intervals.sort(Comparator.comparingInt(a -> a[0]));
+
+
+    for(int i=1;i<intervals.size();i++){
+          int[] prev=intervals.get(i-1);
+          int[]  curr=intervals.get(i);
+
+          if(curr[0]<=prev[1]){
+                 ans.add(new int[] {
+                Math.min(prev[0], curr[0]),
+                Math.max(prev[1], curr[1])
+
+          });
+    }
+}
+return ans;
+}
 
 public static void main (String[] args) {
     int[] nums = {1,5,7,9,12,24,36};
     int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3,7,9,10};
     // int[] num = Arrays.sort(nums);
-    List<List<Integer>> result = threeSum(nums);
+    //List<List<Integer>> result = threeSum(nums);
     //System.out.println(result);
     // System.out.println(LenthofSubarraySum(arr2));
-     System.out.println(BinarySearch(nums,24));
+     //System.out.println(BinarySearch(nums,24));
+
+      List<int[]> intervals = Arrays.asList(
+            new int[] {1, 5},
+            new int[] {3, 7},
+            new int[] {8, 10},
+            new int[] {9, 12}
+        );
+
+        List<int[]> overlaps = findOverlapping(intervals);
+
+        System.out.println("Overlapping intervals:");
+        for (int[] interval : overlaps) {
+            System.out.println(Arrays.toString(interval));
+        }
     
 }
 }
