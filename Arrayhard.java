@@ -96,20 +96,57 @@ public static List<int[]> findOverlapping(List<int[]> intervals)
     // Sort by start time
     intervals.sort(Comparator.comparingInt(a -> a[0]));
 
-
+//System.out.println(intervals);
     for(int i=1;i<intervals.size();i++){
           int[] prev=intervals.get(i-1);
           int[]  curr=intervals.get(i);
 
-          if(curr[0]<=prev[1]){
+          if(curr[0]<=prev[1] ){
+
+           // System.out.println(i +" "+prev[0]+" "+ curr[1]);
                  ans.add(new int[] {
-                Math.min(prev[0], curr[0]),
-                Math.max(prev[1], curr[1])
+               Math.max(prev[0], curr[0]),
+                Math.min(prev[1], curr[1])
 
           });
     }
-}
+  
+    }
 return ans;
+}
+
+//Merge OverLapping Intervals
+
+public static List<int[]> MergeOverlapping(List<int[]> intervals){
+List<int[]>  merge=new ArrayList<>();
+
+intervals.sort(Comparator.comparingInt(a->a[0]));
+
+if(intervals==null || intervals.size()<2) return intervals;
+
+merge.add(intervals.get(0));
+
+int [] current=intervals.get(0);
+
+
+for(int i=0;i<intervals.size();i++){
+
+    int[] next=intervals.get(i);
+
+    if(current[1]>=next[0]){
+
+        current[1]=Math.max(current[1], next[1]);
+    }
+    else{
+        current=next;
+        merge.add(current);
+    }
+
+}
+
+
+
+return merge;
 }
 
 public static void main (String[] args) {
@@ -122,10 +159,13 @@ public static void main (String[] args) {
      //System.out.println(BinarySearch(nums,24));
 
       List<int[]> intervals = Arrays.asList(
-            new int[] {1, 5},
-            new int[] {3, 7},
+            new int[] {1, 3},
+            new int[] {2, 6},
+            new int[] {8, 9},
+            new int[] {9, 11},
             new int[] {8, 10},
-            new int[] {9, 12}
+            new int[] {15, 18},
+            new int[] {16, 17}
         );
 
         List<int[]> overlaps = findOverlapping(intervals);
@@ -134,6 +174,16 @@ public static void main (String[] args) {
         for (int[] interval : overlaps) {
             System.out.println(Arrays.toString(interval));
         }
+ 
+
+        System.err.println("merge");
+        List<int[]> merged=MergeOverlapping(intervals);
+
+        for(int[] i : merged){
+            System.out.println(Arrays.toString(i));
+        }
+
+       
     
 }
 }
