@@ -149,9 +149,49 @@ for(int i=0;i<intervals.size();i++){
 return merge;
 }
 
+//Merge Sorted Arrays without using Extra space
+
+public static void MergeArray(int[] ar1,int[] ar2)
+
+{
+
+int n=ar1.length;
+int m=ar2.length;
+int left=n-1,right=0;
+
+while(left>=0 && right<m){
+
+    if(ar1[left]>=ar2[right]){
+
+        int temp=ar1[left];
+        ar1[left]=ar2[right];
+    ar2[right]=temp;
+    left--;
+    right++;
+    }
+    else{
+        break;
+    }
+
+}
+Arrays.sort(ar1);
+Arrays.sort(ar2);
+for (int i : ar1) {
+    System.out.print(i+" ");
+    
+}
+System.out.println("Array2");
+for (int i : ar2) {
+    System.out.print(i+" ");
+}
+
+
+}
+
+
 public static void main (String[] args) {
-    int[] nums = {1,5,7,9,12,24,36};
-    int[] arr2={1,-1,3,2,-2,-8,1,7,10,2,3,7,9,10};
+    int[] nums = {0,1,3,5,7,9};
+    int[] arr2={2,4,6,8,10};
     // int[] num = Arrays.sort(nums);
     //List<List<Integer>> result = threeSum(nums);
     //System.out.println(result);
@@ -168,6 +208,9 @@ public static void main (String[] args) {
             new int[] {16, 17}
         );
 
+
+        System.out.println("merge Sorted Arrays");
+        MergeArray(nums,arr2);
         List<int[]> overlaps = findOverlapping(intervals);
 
         System.out.println("Overlapping intervals:");
