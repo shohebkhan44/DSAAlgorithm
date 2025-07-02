@@ -129,7 +129,7 @@ merge.add(intervals.get(0));
 int [] current=intervals.get(0);
 
 
-for(int i=0;i<intervals.size();i++){
+for(int i=1;i<intervals.size();i++){
 
     int[] next=intervals.get(i);
 
