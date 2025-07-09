@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class StringsDSA {
    
@@ -349,17 +352,253 @@ public static boolean PowerTwo(int n)
       return true;
       
 }
+
+//Concatenated words
+public static List<String> ConcatenatedWords(String[] words){
+
+       HashMap<String,Boolean> hm=new HashMap<>(); 
+       Set<String>  st=new HashSet<>(Arrays.asList(words));
+       List<String> result=new ArrayList<>();
+       for(int i=0;i<words.length;i++){
+
+                 if(isConcatenate(words[i],st,hm)){
+ result.add(words[i]);
+
+                 }
+
+       }
+
+return result;
+}
+
+//To chk word is concatenate
+
+public static boolean isConcatenate(String str,Set<String> st,HashMap<String,Boolean> hm){
+
+          if(hm.containsKey(str)){
+            return hm.get(str);
+          }
+          
+                for(int i=0;i<str.length()-1;i++){
+                  String prefix=str.substring(0,i+1);
+                  String suffix=str.substring(i+1);
+                     
+                  if((st.contains(prefix) && st.contains(suffix)) ||
+                   (st.contains(prefix) && isConcatenate(suffix, st, hm))){
+
+                         hm.put(str, true);
+                         return true;
+
+                   }
+                     
+
+                }
+               hm.put(str, false);
+                   return false;
+}
+
+//string S is subsequence of other string T
+
+public static boolean  IsSubsequence(String S,String T)
+{
+       int i=0;int j=0;
+         while(i<=S.length()-1 && j<=T.length()-1){
+
+        if (S.charAt(i) == T.charAt(j)) 
+          {
+               i++;j++;
+          }
+          else{
+            j++;
+          }
+
+        }
+      boolean result = (i == S.length());
+
+return result;
+}
+
+//Reverse only characters
+
+public static char[] ReverseCharacters(String str)
+{
+  char[] newStr=str.toCharArray();
+int start=0;int end=str.length()-1;
+            
+             while (start < end) {
+              if(!Character.isLetter(newStr[start])){
+                start++;
+              }
+              else if(!Character.isLetter(newStr[end]))
+              {
+                     end--;
+              }
+    else {
+                 char temp=newStr[start];
+                 newStr[start]=newStr[end];
+                 newStr[end]=temp;
+            start++;end--;
+             }
+
+
+             }
+             return newStr; 
+   }
+
+
+//prefix of any word
+
+public static int prefixofWord(String str,String search)
+{
+      String words[]=str.split(" ");
+
+      for(int i=0;i<words.length;i++)
+      {
+           if(words[i].startsWith(search)){
+
+            return i+1;
+           }
+
+      }
+      return -1;
+    }
+
+    //Number of vowels strings
+
+    public static int NumberOfVowels(String str[])
+    {
+
+      int count=0;
+        for(int i=0;i<=str.length-1;i++)
+        {
+          char start=str[i].charAt(0);
+          char end=str[i].charAt(str[i].length()-1);
+           if(start=='a' ||start=='e' ||start=='i' ||start=='o' ||start=='u'){
+
+           
+           if(end=='a' ||end=='e'||end=='i' ||end=='o' ||end=='u' ){
+                  count++; 
+           }
+
+        }
+      }
+       return count;
+             
+    }
+
+
+//Merge String Alternate
+
+public static String MergedAlternate(String S,String T)
+{
+     
+            StringBuilder mergedString=new StringBuilder(); 
+            int Sindex=0;int Tindex=0;
+            
+             while(Sindex < S.length() && Tindex < T.length() ){
+
+                    mergedString.append(S.charAt(Sindex++));
+                    mergedString.append(T.charAt(Tindex++));
+             }
+             while (Sindex < S.length()) {
+                   mergedString.append(S.charAt(Sindex++));
+    }
+                  while (Tindex < T.length()) {
+                   mergedString.append(T.charAt(Tindex++));
+            }
+             
+
+         return mergedString.toString();    
+            
+}
+
+//Contains the charcter in words
+
+public static List<Integer> ContainsCharacter(String[] str,char x)
+{
+
+int i=0;
+List<Integer> ls=new ArrayList<>();
+  
+
+while (i<str.length) {
+     
+  if(str[i].indexOf(x)!=-1){
+      ls.add(i);
+
+  }
+  i++;
+}
+return ls;
+
+
+}
+
+//Roman to integers
+
+public static int ConvertRtoInt(String S){
+int sum=0;int prevalue=0;
+HashMap<Character,Integer> hm=new HashMap<>();
+
+    hm.put('I',1);
+     hm.put('V',5); hm.put('X',10); hm.put('L',50);
+      hm.put('C',100); hm.put('D',500); hm.put('M',1000);
+for(int i=S.length()-1;i>=0;i--)
+{
+  int curretValue=hm.get(S.charAt(i));
+    if(prevalue<=curretValue){
+      sum+=curretValue;
+    }
+    else{
+      sum-=curretValue;
+    }
+    prevalue=curretValue;
+
+}
+return sum;
+
+}
+
+// Valid Parentheses
+
+public static Boolean ValidParentheses(String str)
+{
+  while(true)
+  {
+    String original=str;
+  
+
+   
+    str=str.replace("()", ""); 
+    str=str.replace("{}", "");
+    str=str.replace("[]", "");
+   
+   if(str.equals(original))
+    return str.isEmpty();
+   }
+}
+
+
     public static void main(String[] args) {
         String S="Hi how are you Doing  rt";
         String haystack="Sadbutsad";
         String needle="but";
         String[] strArr={"boomrang","bolt","boing","boll"};
+       String[] words = {"cat", "cats", "dog", "catsdog", "rat", "ratcatdog"};
+       // List<String> result = ConcatenatedWords(words);
+
+        // System.out.println("Concatenated Words:");
+        // for (String word : result) {
+        //     System.out.println(word);
+        // }
+
+       
        // System.err.println(reverseWords(S));
        // System.out.println(Palindrome("radar"));
         //System.out.println(CountCharacters("foot ball"));
        // System.out.println(Anagram("keep","pseek"));
        // System.out.println(LengthofWord(S));
-       // System.out.println(FirstOccurence(haystack,needle));
+        //System.out.println(FirstOccurence(haystack,needle));
        //System.out.println(FirstUniqueChar("poppoy"));
       //System.out.println(ReverseVowels("again"));
       //System.out.println(WordPattern("apple banana banana aple","abba"));
@@ -368,6 +607,17 @@ public static boolean PowerTwo(int n)
      // System.out.println(StringDifference("abc","abcc"));
      // System.out.println(IsomorphicStrings("aa","gg"));
       //System.out.println(EquivalentStrings("aab", "aaabbb"));
-      System.out.println(PowerTwo(1));
+      //System.out.println(PowerTwo(1));
+      //System.out.println(IsSubsequence("abc", "dabjhc"));
+      //System.out.println(ReverseCharacters("a-bC-dEf-ghIj"));
+      //System.out.println(prefixofWord("drum burger along fre","dr"));
+      String[] str={"apple", "orange", "banana", "umbrella", "Ink", "echo", 
+      "try", "area", "sky", "Egg"};;
+      //System.out.println(NumberOfVowels(str));
+      //System.out.println(MergedAlternate("abc", "pqr"));
+      //System.out.println(ContainsCharacter(str,'a'));
+      //System.out.println(ConvertRtoInt("F"));
+      System.out.println(ValidParentheses("{[()]}"));
+
     }
 }
