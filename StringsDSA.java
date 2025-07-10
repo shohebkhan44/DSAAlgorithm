@@ -578,7 +578,106 @@ public static Boolean ValidParentheses(String str)
    }
 }
 
+//RansomNote
 
+public static boolean RansomNote(String Ransom,String magazine)
+{
+
+     int[] count=new int[26];
+
+     for(int i=0;i<magazine.length();i++)
+     {
+          count[magazine.charAt(i)-'a']++;
+      
+     }
+  
+     for (char ch  : Ransom.toCharArray()) {
+               if(count[ch-'a']==0){
+                return false;
+               }
+               else{
+                count[ch-'a']--;
+               }
+
+     }
+     return true;
+
+}
+
+//Checked Balanced String
+
+public static boolean IsBalanced(String str)
+{
+int sumEven=0;int sumOdd=0;
+ for (int i = 0; i < str.length(); i++) 
+  {
+     
+    if (i%2==0) {
+            
+      sumEven+=str.charAt(i) - '0';
+         }
+         else{
+          sumOdd+=str.charAt(i) - '0';
+         }
+         
+  }
+  return sumEven == sumOdd;
+      
+}
+public static String AddStrings(String S,String T)
+{
+  StringBuilder str=new StringBuilder();
+  int carry=0;
+      int i=S.length()-1;
+      int j=T.length()-1;
+
+      while(i>=0 || j>=0 || carry!=0){
+
+         int digit1=i>=0?S.charAt(i)- '0':0;
+         int digit2=j>=0?T.charAt(j)- '0':0;
+          
+          int sum=digit1+digit2+carry;
+          
+          carry=(digit1 +digit2)/10;
+          str.append(sum%10);
+i--;j--;
+      }
+      return str.reverse().toString();
+  
+}
+
+//String to Integer Leetcode 8
+
+public static int StringToInteger(String str)
+{
+
+ str.trim();int i=0;int num=1;int sign=1;
+
+ if(str.charAt(i)=='-' || str.charAt(i)=='+')
+ {
+     sign=str.charAt(i)=='-'?-1:1;
+
+ }
+
+ 
+ while(i <str.length() && Character.isDigit(str.charAt(i)))
+ {
+       
+    num=num*10 + str.charAt(i)- '0';
+     if(num*sign>Integer.MAX_VALUE){
+      return Integer.MAX_VALUE;
+     }
+     if(num*sign>Integer.MIN_VALUE){
+      return Integer.MIN_VALUE;
+     }
+     i++;
+ }
+
+ return (int)  sign* num;
+
+
+
+}
     public static void main(String[] args) {
         String S="Hi how are you Doing  rt";
         String haystack="Sadbutsad";
@@ -617,7 +716,12 @@ public static Boolean ValidParentheses(String str)
       //System.out.println(MergedAlternate("abc", "pqr"));
       //System.out.println(ContainsCharacter(str,'a'));
       //System.out.println(ConvertRtoInt("F"));
-      System.out.println(ValidParentheses("{[()]}"));
+      //System.out.println(ValidParentheses("{[()]}"));
+      //System.out.println(RansomNote("baba", "aabahas"));
+     // System.out.println(IsBalanced("24123"));
+     // System.out.println(AddStrings("105", "200"));
+      System.out.println(StringToInteger("1337c0d3"));
+
 
     }
 }
