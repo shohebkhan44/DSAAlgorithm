@@ -49,7 +49,7 @@ public static int FirstOccurence(String S,String T){
 public static String reverseWords(String str){
 
 
-    String[] words=str.split(" +");
+    String[] words=str.split(" ++");
     StringBuilder strB=new StringBuilder();
     String S=str.trim();
 
