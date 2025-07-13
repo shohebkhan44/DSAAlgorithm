@@ -14,19 +14,44 @@ while (low<=high)
   {
     return arr[mid];
   }
-  else if(target<arr[mid])
+  else if(target<=arr[mid])
   {
-          
-          low=mid+1;
+          high=mid-1;
+;
   }
   else{
-    high=mid-1;
+    low=mid+1;
   }
   
 }
  return -1;
 }
 
+
+//Lower bound
+
+public static int LowerBound(int[] arr,int x)
+{
+       int low=0;int high=arr.length-1;
+       int ans=arr.length;
+
+       while (low<=high) {
+        
+           int mid=(low+high)/2;
+
+
+           if(arr[mid]>=x){
+            ans=mid;
+            high=mid -1;
+           }
+           else{
+            low=mid+1;
+           }
+       }
+       return ans;
+   
+
+}
 
 public static void main(String[] args) {
     int array[]={1,3,5,6,7,9,12,79,87,89,989};
