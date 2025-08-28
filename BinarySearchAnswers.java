@@ -216,6 +216,25 @@ return ans;
         return ans;
 
     }
+
+    //kth missing positive number
+
+    public static int KthMissing(int[] arr,int k){
+
+        int low=0,high=arr.length-1;
+        while (low<=high) {
+        int mid=(low+high)/2;
+        int missing=arr[mid]-(mid+1);
+            if(missing<k) {
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+              
+        }
+        return low+k;
+    }
     public static void main(String[] args) {
         int num = 27;
         int n = 4;
@@ -223,12 +242,14 @@ return ans;
         int[] piles = { 3, 6, 7, 11 };
         int[] Days = { 7, 7, 7, 7, 13, 11, 12, 7 };
         int [] smallDiv={1,2,5,9};
+        int [] KthMissing={2,3,4,7,11};
         int [] Loads={1,2,3,4,5,6,7,8,9,10};
         // System.out.println("square root of"+ num +"is"+SqrtBS(num));
         // System.out.println(n + " root of" + " " + m + " " + "is" + " " + NthRootBS(n, m));
         // System.out.println("The minimum rate at which koko can eat is" + " " + KokoEatingBananaBS(piles, 8));
         // System.out.println(MinDaysforBouquets(Days, 2, 3));
        // System.out.println("the smallest divisor is"+ SmallestDivisor(smallDiv, 6));
-       System.out.println("least capacity"+ LeastCapacity(Loads, 5));
+       //System.out.println("least capacity"+ LeastCapacity(Loads, 5));
+       System.out.println(KthMissing(KthMissing,5));
     }
 }
