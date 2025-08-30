@@ -176,7 +176,7 @@ public class LinkedListIntro {
 
     public static void main(String[] args) {
 
-        int[] arr = { 1,2, 3, 4, 5, 6, 7 };
+        int[] arr = { 1,2, 3, 4, 5, 6,78, 7 };
         Node Node1 = new Node(arr[2], null);
         System.out.println(Node1.data);
         Node head = ConArrToLL(arr);
