@@ -93,16 +93,68 @@ prev=temp;
        return head;
 }
 
+
+//Insert at Head
+
+public static Node InsertHead(Node head,int val)
+{
+
+    if(head==null){
+        return new Node(val);
+    }
+    Node newNode=new Node(val);
+    newNode.next=head;
+    head.back=newNode;
+    return newNode;
+
+}
+
+public static Node InsertTail(Node head,int val)
+{
+Node tail=head;
+Node prev=null;
+while(tail.next!=null)
+{
+prev=tail;
+    tail=tail.next;
+}
+Node newnode=new Node(val,null,tail);
+tail.next=newnode;
+return head;
+}
+
+public static Node ReverseDLL(Node head){
+
+Node current=head;
+Node temp=null;
+    while (current!=null) {
+        
+        temp=current.back;
+        current.back=current.next;
+        current.next=temp;
+
+
+        current=current.back;
+    }
+
+     // After the loop, temp is at the new head's previous node
+        if (temp != null) {
+            head = temp.back;
+        }
+    return head;
+}
 public static void main(String[] args) {
     int arr[]={1,2,3,4,5,6,7};
     Node head=ConvertToArray(arr);
     // head=DeleteHead(head);
    // head=DeleteTail(head);
-   head=DeleteKth(head, 3);
-    Node temp=head;
+   //head=DeleteKth(head, 3);
+   head=InsertHead(head,7878);
+   head=InsertTail(head, 56);
+   head=ReverseDLL(head);
+   Node temp=head;
     while(temp!=null)
     {
-        
         System.out.print(temp.data+ " ");
         temp=temp.next;
     }
