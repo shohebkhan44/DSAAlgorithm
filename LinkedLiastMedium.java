@@ -141,35 +141,67 @@ int count=0;
 
     }
 
+//Checking if link list is palindrome
 
+public static Boolean IsLLpalindrome(Node head)
+{
+
+    Node temp=head;
+    Node slow=head;
+    Node fast=head;
+    while (fast.next!=null && fast.next.next!=null) {
+        
+ slow=slow.next;
+ fast=fast.next;
+    }
+    Node newhead=reverseList(slow.next);
+    Node first=head;
+    Node second=newhead;
+
+    while(second!=null)
+    {
+           if(first.data!=second.data)
+           {
+            reverseList(newhead);
+            return false;
+           }
+           first=first.next;
+           second=second.next;
+
+    }
+    reverseList(newhead);
+    return true;
+}
 
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, 4, 5, 6, 78, 7 };
         // Node Node1 = new Node(arr[2], null);a = Node("A")
-        Node a = new Node(12);
-        Node b = new Node(1);
-        Node c = new Node(2);
-        Node d = new Node(3);
-        Node e = new Node(4);
+        Node a = new Node(1);
+        Node b = new Node(2);
+        Node c = new Node(3);
+        Node d = new Node(2);
+        Node e = new Node(1);
         a.next = b;
         b.next = c;
         c.next = d;
         d.next = e;
-        e.next=b;
+        //e.next=b;
 
         // System.out.println(Node1.data);
         Node head = ConArrToLL(arr);
         // head=reverseList(head);
         // head=RecursiveReverse(head)
-        System.out.println(DetectLoop(a));
-        Node start=StartingNode(a);
-        System.out.println("staring node is"+start.data);
-        System.out.println("The length of loop is"+LengthofLoop(a));
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-        }
+        // System.out.println(DetectLoop(a));
+        // Node start=StartingNode(a);
+        // System.out.println("staring node is"+start.data);
+        // System.out.println("The length of loop is"+LengthofLoop(a));
+        // Node temp = head;
+        Boolean flag=IsLLpalindrome(a);
+        System.out.println("the List"+ " "+flag);
+        // while (temp != null) {
+        //     System.out.print(temp.data + " ");
+        //     temp = temp.next;
+        // }
 
     }
 }
