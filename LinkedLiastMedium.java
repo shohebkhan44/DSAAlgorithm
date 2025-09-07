@@ -173,6 +173,30 @@ public static Boolean IsLLpalindrome(Node head)
     return true;
 }
 
+//Delete Nth node from back
+
+
+public static Node DeleteNthBack(Node head,int n)
+{
+  Node fast=head;
+  Node slow=head;
+
+  for(int i=0;i<n;i++){
+    fast=fast.next;
+  }
+
+  if(fast==null) return head.next;//edge case
+
+  while (fast.next!=null) {
+    slow=slow.next;
+    fast=fast.next;
+  }
+  slow.next=slow.next.next;
+  return head;
+
+
+}
+
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, 4, 5, 6, 78, 7 };
         // Node Node1 = new Node(arr[2], null);a = Node("A")
@@ -195,13 +219,14 @@ public static Boolean IsLLpalindrome(Node head)
         // Node start=StartingNode(a);
         // System.out.println("staring node is"+start.data);
         // System.out.println("The length of loop is"+LengthofLoop(a));
-        // Node temp = head;
-        Boolean flag=IsLLpalindrome(a);
-        System.out.println("the List"+ " "+flag);
-        // while (temp != null) {
-        //     System.out.print(temp.data + " ");
-        //     temp = temp.next;
-        // }
+        head=DeleteNthBack(head,3);
+        Node temp = head;
+       // Boolean flag=IsLLpalindrome(a);
+       // System.out.println("the List"+ " "+flag);
+        while (temp != null) {
+            System.out.print(temp.data + "->"+" ");
+            temp = temp.next;
+        }
 
     }
 }
