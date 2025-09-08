@@ -197,8 +197,156 @@ public static Node DeleteNthBack(Node head,int n)
 
 }
 
+//Delete middle node
+
+public static Node DeleteMiddleNode(Node head)
+{
+
+Node slow=head;
+Node fast=head;
+Node temp=head;
+
+// Edge case: list is empty or has only one node
+    if (head == null || head.next == null)
+        return null;
+
+  while (fast != null && fast.next != null) {
+ temp=slow;
+    slow=slow.next;
+    fast=fast.next.next;
+
+}
+temp.next=temp.next.next;
+return head;
+
+}
+
+
+//frm cht
+
+    // Function to sort the linked list
+    public static Node sortList(Node head) {
+        // Base case: if list is empty or has one element
+        if (head == null || head.next == null)
+            return head;
+
+        // Step 1: Split the list into two halves
+        Node middle = getMiddle(head);
+        Node nextOfMiddle = middle.next;
+
+        // Disconnect the left half from the right half
+        middle.next = null;
+
+        // Step 2: Recursively sort both halves
+        Node left = sortList(head);
+        Node right = sortList(nextOfMiddle);
+
+        // Step 3: Merge the two sorted halves
+        Node sortedList = merge(left, right);
+        return sortedList;
+    }
+
+    // Helper function to get the middle of the linked list
+    public static Node getMiddle(Node head) {
+        if (head == null)
+            return head;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Move fast by 2 and slow by 1
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    // Helper function to merge two sorted linked lists
+    public static Node merge(Node left, Node right) {
+        // Dummy node to start the merged list
+        Node dummy = new Node(0);
+        Node tail = dummy;
+
+        // Merge the two lists by comparing their values
+        while (left != null && right != null) {
+            if (left.data <= right.data) {
+                tail.next = left;
+                left = left.next;
+            } else {
+                tail.next = right;
+                right = right.next;
+            }
+            tail = tail.next;
+        }
+
+        // If there are remaining nodes in either list, attach them
+        if (left != null) {
+            tail.next = left;
+        } else if (right != null) {
+            tail.next = right;
+        }
+
+        // Return the head of the sorted list
+        return dummy.next;
+    }
+
+
+//sort 0s ,1s,2s in LL
+
+public static Node SortLinkList(Node head)
+
+{
+
+ Node zeroDummy = new Node(-1);
+        Node oneDummy = new Node(-1);
+        Node twoDummy = new Node(-1);
+
+        // Tail pointers for each sub-list
+        Node zerotail = zeroDummy, onetail = oneDummy, twotail = twoDummy;
+Node temp=head;
+
+while (temp!=null) {
+   
+    
+    if(temp.data==0)
+    {
+
+        zerotail.next=temp;
+        zerotail=zerotail.next;
+    }
+     if(temp.data==1)
+    {
+
+        onetail.next=temp;
+        onetail=onetail.next;
+    }
+     if(temp.data==2)
+    {
+
+        twotail.next=temp;
+        twotail=twotail.next;
+    }
+    temp=temp.next;
+
+}
+
+  // Now connect the three lists together: 0s -> 1s -> 2s
+        // Important: Handle if one of the lists is empty
+     zerotail.next = (oneDummy.next != null) ? oneDummy.next : twoDummy.next;
+        onetail.next = twoDummy.next;
+        twotail.next = null;
+
+        // Head of the new list
+        return zeroDummy.next;
+
+
+
+
+}
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 78, 7 };
+        int[] arr = { 5,2,1,3,6, 6, 78, 7 };
+        int[] ar2=  {0,1,2,1,2,0,0,2,1};
         // Node Node1 = new Node(arr[2], null);a = Node("A")
         Node a = new Node(1);
         Node b = new Node(2);
@@ -212,14 +360,18 @@ public static Node DeleteNthBack(Node head,int n)
         //e.next=b;
 
         // System.out.println(Node1.data);
-        Node head = ConArrToLL(arr);
+        //Node head = ConArrToLL(arr);
+        Node head = ConArrToLL(ar2);
+         head=SortLinkList(head);
         // head=reverseList(head);
         // head=RecursiveReverse(head)
         // System.out.println(DetectLoop(a));
         // Node start=StartingNode(a);
         // System.out.println("staring node is"+start.data);
         // System.out.println("The length of loop is"+LengthofLoop(a));
-        head=DeleteNthBack(head,3);
+       // head=DeleteNthBack(head,3);
+       //head=DeleteMiddleNode(head);
+      // head=SortLinkList(head);
         Node temp = head;
        // Boolean flag=IsLLpalindrome(a);
        // System.out.println("the List"+ " "+flag);
