@@ -339,24 +339,89 @@ while (temp!=null) {
 
         // Head of the new list
         return zeroDummy.next;
-
-
-
-
 }
+
+
+//helper function fr below code
+public static Node check(Node t1,Node t2)
+{
+
+    if(t1==t2){
+        return t1;
+    }
+    t1=t1.next;
+    t2=t2.next;
+    return null;
+}
+//Find the Intersection Point
+
+
+public static Node IntersectionNode(Node head1,Node head2)
+{
+
+ Node t1=head1;Node t2=head2;
+ int n1=0,n2=0;//Lengths of Lists
+
+ while (t1!=null) {
+    
+    n1++;
+    t1=t1.next;
+ }
+ while (t2!=null) {
+    
+    n2++;
+    t2=t2.next;
+ }
+ t1=head1;t2=head2;
+
+ int diff=Math.abs(n2-n1);
+
+    if(n2>n1)
+    {
+        for(int i=0;i<diff;i++)
+        {
+            t2=t2.next;
+        }
+    }
+    else
+    {
+        for(int j=0;j<diff;j++)
+        {
+            t1=t1.next;
+        }
+    }
+
+        // Traverse both lists together until nodes are same or end reached
+    while (t1 != null && t2 != null) {
+        if (t1 == t2) {
+            return t1;  // Intersection found
+        }
+        t1 = t1.next;
+        t2 = t2.next;
+    }
+
+   return null;
+}
+
     public static void main(String[] args) {
         int[] arr = { 5,2,1,3,6, 6, 78, 7 };
         int[] ar2=  {0,1,2,1,2,0,0,2,1};
         // Node Node1 = new Node(arr[2], null);a = Node("A")
-        Node a = new Node(1);
+        Node head1 = new Node(1);
         Node b = new Node(2);
         Node c = new Node(3);
         Node d = new Node(2);
         Node e = new Node(1);
-        a.next = b;
+        head1.next = b;
         b.next = c;
-        c.next = d;
-        d.next = e;
+   Node head2 =new Node(11);
+        Node Intersection=new Node(24);
+ c.next = Intersection;
+ head2.next=Intersection;
+ Intersection.next=d;
+ d.next=e;
+
+        
         //e.next=b;
 
         // System.out.println(Node1.data);
@@ -375,6 +440,15 @@ while (temp!=null) {
         Node temp = head;
        // Boolean flag=IsLLpalindrome(a);
        // System.out.println("the List"+ " "+flag);
+
+Node result = IntersectionNode(head1, head2);
+        if (result != null) {
+            System.out.println("Intersection at node with data = " + result.data);
+        } else {
+            System.out.println("No intersection found.");
+        }
+
+
         while (temp != null) {
             System.out.print(temp.data + "->"+" ");
             temp = temp.next;
