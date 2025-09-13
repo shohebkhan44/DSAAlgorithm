@@ -34,17 +34,19 @@ public class LinkedLiastMedium {
 
     // iterative approach
     public static Node reverseList(Node head) {
-        Node temp = head;
-        Node prev = null;
-        Node nxt = null;
-        while (temp != null) {
-            nxt = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = nxt;
-        }
-        return prev;
+       Node temp = head;     // Current node we’re visiting
+    Node prev = null;     // Previous node (starts as null for the new tail)
+    Node nxt = null;      // Next node (used for temporary storage)
+    
+    while (temp != null) {
+        nxt = temp.next;   // Save next node
+        temp.next = prev;  // Reverse the link
+        prev = temp;       // Move prev forward
+        temp = nxt;        // Move temp forward
     }
+    
+    return prev;           // New head of the reversed list
+}
 
     // Recursive Approach
 
@@ -385,7 +387,7 @@ public static Node IntersectionNode(Node head1,Node head2)
     }
     else
     {
-        for(int j=0;j<diff;j++)
+        for(int j=1;j<=diff;j++)
         {
             t1=t1.next;
         }
