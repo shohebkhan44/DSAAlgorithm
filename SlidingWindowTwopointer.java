@@ -67,10 +67,77 @@ public class SlidingWindowTwopointer {
 
 
   }
+
+  //Longest Subarray with consecutive !s with max K zeroes
+
+
+  private static int LongestSubarray(int[] arr,int k)
+  {
+
+    int zeroes=0,left=0,right=0;
+    int maxlength=0;
+    while (right<arr.length) {
+        
+        if(arr[right]==0){
+            zeroes++;
+        }
+        if(zeroes>k)
+        {
+            if(arr[left]==0) {
+                
+                zeroes--;
+            }
+            left=left+1;
+        }
+         maxlength=Math.max(maxlength, right-left+1);
+         right++;
+
+    }
+    return maxlength;
+
+
+
+  }
+
+  //fruits in baskets
+
+  private static int fruitsInbaskets(int[] fruits,int k)
+  {
+int left=0,right=0,maxlength=0;
+HashMap<Integer,Integer> map=new HashMap<>();
+        while (right<fruits.length) {
+            
+            map.put(fruits[right],map.getOrDefault(fruits[right], 0)+1);
+            if(map.size()<=k)
+            {
+                maxlength=Math.max(maxlength, right-left+1);
+            }
+            else{
+
+                while (map.size()<=k) {
+                    
+                    map.put(fruits[left],map.getOrDefault(fruits[left], 0)-1);
+               if(map.get(fruits[left])==0){
+                    map.remove(fruits[left]);
+                    
+                }
+                left=left+1;
+
+            }
+        }
+        right++;
+        }
+        return maxlength;
+
+  }
     public static void main(String[] args) {
 
-        System.out.println(longestSubstringWithKDistinct("eceba", 2)); 
-        System.out.println(LongestSubstringWithoutRepeatingChar("abcdefghij"));
+        int[] arr={1,0,0,1};
+        int[] fruits={3,3,3,1,2,1,1,2,3,3,4};
+       // System.out.println(longestSubstringWithKDistinct("eceba", 2)); 
+       // System.out.println(LongestSubstringWithoutRepeatingChar("abcdefghij"));
+        //System.out.println(LongestSubarray(arr, 2));
+        System.out.println(fruitsInbaskets(fruits, 2));
         
     }
 }
