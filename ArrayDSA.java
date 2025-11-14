@@ -130,7 +130,7 @@ for(int i=0;i<arr.length;i++)
 
 //two sum
 
-static boolean twoSum(int[] arr,int k){
+static int[] twoSum(int[] arr,int k){
     //bruteforceApproach
     // for(int i=0;i<arr.length;i++){
     //     for(int j=i;j<arr.length;j++){
@@ -147,13 +147,13 @@ int left=0,right=arr.length-1;
 while(left<right){
 
     if(arr[left]+arr[right]==k){
-        return true;
+          return new int[]{left,right};
     }
     else if(arr[left]<k-arr[right]){
         left++;
     }
     
-}return false;
+} return new int[]{-1,-1};
 }
 
 static int[] SortedZeroesOnestwos(int[] arr) {
@@ -192,7 +192,8 @@ static int[] SortedZeroesOnestwos(int[] arr) {
         //     //to insert into a set TC=nlogn
         //     st.add(ar2[i]);  
         // }
-        //System.out.println(twoSum(ar, 12));
+        System.out.println("two sum");
+        System.out.println(twoSum(ar, 12));
         //  for (int i : twoSum(ar, 12)) {
         //     System.out.println(i);
         // }

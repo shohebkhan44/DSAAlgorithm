@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SlidingWindowTwopointer {
 
@@ -130,6 +131,54 @@ HashMap<Integer,Integer> map=new HashMap<>();
         return maxlength;
 
   }
+
+  //Longest repeating character replacement
+
+  private static int longestRepeatingCharacter(String s, int k) {
+    int left = 0;
+    int maxCount = 0;
+    int maxLength = 0;
+    Map<Character, Integer> map = new HashMap<>();
+
+    for (int right = 0; right < s.length(); right++) {
+        char ch = s.charAt(right);
+        map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+        maxCount = Math.max(maxCount, map.get(ch));
+
+        // if the remaining characters in the window are more than k, shrink window
+        while ((right - left + 1) - maxCount > k) {
+            char leftChar = s.charAt(left);
+            map.put(leftChar, map.get(leftChar) - 1);
+            left++;
+        }
+
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
+}
+
+
+    public static int numSubarraysWithSum(int[] nums, int goal) {
+        Map<Integer, Integer> prefixSumCount = new HashMap<>();
+        prefixSumCount.put(0, 1);  // base case: prefix sum 0 occurs once
+
+        int sum = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            sum += num;
+
+            // If (sum - goal) has occurred before, it means we found a valid subarray
+            count += prefixSumCount.getOrDefault(sum - goal, 0);
+
+            // Store current sum count
+            prefixSumCount.put(sum, prefixSumCount.getOrDefault(sum, 0) + 1);
+        }
+
+        return count;
+    }
     public static void main(String[] args) {
 
         int[] arr={1,0,0,1};
@@ -137,7 +186,15 @@ HashMap<Integer,Integer> map=new HashMap<>();
        // System.out.println(longestSubstringWithKDistinct("eceba", 2)); 
        // System.out.println(LongestSubstringWithoutRepeatingChar("abcdefghij"));
         //System.out.println(LongestSubarray(arr, 2));
+        int[] nums = {1, 0, 1, 0, 1};
+        int goal = 2;
+
+        System.out.println("Number of subarrays with sum = " + goal + ": " + numSubarraysWithSum(nums, goal));
+    
         System.out.println(fruitsInbaskets(fruits, 2));
+         int result = longestRepeatingCharacter("AABABBA", 1);
+        System.out.println("Longest substring length with at most " + 1  + " replacements: " + result);
+
         
     }
 }
