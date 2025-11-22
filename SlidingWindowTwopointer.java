@@ -69,7 +69,7 @@ public class SlidingWindowTwopointer {
 
   }
 
-  //Longest Subarray with consecutive !s with max K zeroes
+  //Longest Subarray with consecutive 1's with max K zeroes
 
 
   private static int LongestSubarray(int[] arr,int k)
@@ -181,19 +181,19 @@ HashMap<Integer,Integer> map=new HashMap<>();
     }
     public static void main(String[] args) {
 
-        int[] arr={1,0,0,1};
+        int[] arr={1,0,0,1,1,0,0,1,1};
         int[] fruits={3,3,3,1,2,1,1,2,3,3,4};
        // System.out.println(longestSubstringWithKDistinct("eceba", 2)); 
        // System.out.println(LongestSubstringWithoutRepeatingChar("abcdefghij"));
-        //System.out.println(LongestSubarray(arr, 2));
+        System.out.println(LongestSubarray(arr, 2));
         int[] nums = {1, 0, 1, 0, 1};
         int goal = 2;
 
-        System.out.println("Number of subarrays with sum = " + goal + ": " + numSubarraysWithSum(nums, goal));
+        //System.out.println("Number of subarrays with sum = " + goal + ": " + numSubarraysWithSum(nums, goal));
     
-        System.out.println(fruitsInbaskets(fruits, 2));
+      //  System.out.println(fruitsInbaskets(fruits, 2));
          int result = longestRepeatingCharacter("AABABBA", 1);
-        System.out.println("Longest substring length with at most " + 1  + " replacements: " + result);
+       // System.out.println("Longest substring length with at most " + 1  + " replacements: " + result);
 
         
     }

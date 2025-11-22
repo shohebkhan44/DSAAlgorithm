@@ -1,0 +1,48 @@
+DSAAlgorithm - Solutions by Topic
+Generated: 2025-11-22
+
+Arrays
+- ArrayDSA.java — Common array problems and helper utilities (search, traversal, transforms).
+- Arraymedium.java — Medium-difficulty array problems (subarray sums, rearrangements).
+- Arrayhard.java — Hard array challenges and optimized approaches.
+- arsumchat.java — Small utilities and sum/aggregation exercises.
+
+Binary Search / Searching
+- BinarySearch.java — Binary search implementations and variants (lower/upper bound).
+- BinarySearchAnswers.java — Worked solutions and edge-case handling for binary-search problems.
+
+Sorting & Algorithms
+- SortingAlgo.java — Classic sorting algorithm implementations and complexity notes.
+
+Linked Lists
+- LinkedLiastMedium.java — Reverse (iterative/recursive), detect loop, find loop start, cycle length, palindrome check, delete Nth-from-end, delete middle node, merge-sort, sort 0s/1s/2s, intersection detection.
+- linkedList.java — Basic singly-linked list operations (insert, delete, traversal).
+- LinkedListIntro.java — Introductory linked-list examples and simple manipulations.
+- DoublyLL.java — Doubly-linked list implementation and operations.
+- DLLmedium.java — Medium problems on doubly-linked lists.
+
+Strings
+- StringsDSA.java — String algorithm problems (palindrome, anagrams, substring patterns).
+- StringsJava.java — Java-specific string handling utilities and examples.
+
+Recursion
+- Recursion.java — Foundational recursion problems and examples (factorial, backtracking templates).
+- Recursions.java — Additional recursive exercises and divide-and-conquer examples.
+
+Sliding Window / Two-pointer
+- SlidingWindowTwopointer.java — Sliding-window patterns and two-pointer solutions for subarray/subsequence problems.
+
+Hashing
+- hashing.java — Frequency counting, hash map/set usage for optimization.
+
+Digits / Numbers
+- Digits.java — Digit manipulation problems (reverse digits, sums, digit helpers).
+
+Classic / Misc
+- TwoSum.java — Two-sum problem using hashing/two-pointer approaches.
+- Main.java — Sample driver and small demos.
+- tempCodeRunnerFile.java — Temporary scratch/test code used during development.
+
+Notes
+- Many files include `main` methods with small demos; run/modify as needed.
+- Consider adding JUnit tests and splitting problems into topic subfolders for clarity.

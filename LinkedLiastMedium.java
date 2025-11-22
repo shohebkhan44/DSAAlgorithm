@@ -1,4 +1,3 @@
-
 class Node {
 
     int data;
@@ -21,6 +20,7 @@ public class LinkedLiastMedium {
     // Implementing link list
 
     private static Node ConArrToLL(int arr[]) {
+        if (arr == null || arr.length == 0) return null;
         Node head = new Node(arr[0]);
         Node mover = head;
         for (int i = 1; i < arr.length; i++) {
@@ -52,8 +52,7 @@ public class LinkedLiastMedium {
 
     public static Node RecursiveReverse(Node head) {
 
-        while (head == null || head.next == null) {
-
+        if (head == null || head.next == null) {
             return head;
         }
 
@@ -95,7 +94,7 @@ public class LinkedLiastMedium {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null || fast.next != null) {
+        while (fast != null && fast.next != null) {
 
             slow = slow.next;
             fast = fast.next.next;
@@ -122,22 +121,19 @@ public class LinkedLiastMedium {
     {
         Node slow = head;
         Node fast = head;
-int count=0;
-        while (fast != null || fast.next != null) {
-
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
-                slow = head;
-                while (slow != fast) {
-
-                    slow = slow.next;
+                // count cycle length
+                int count = 1;
+                Node temp = slow;
+                while (temp.next != slow) {
+                    temp = temp.next;
                     count++;
                 }
                 return count;
-
             }
-
         }
         return 0;
 
@@ -148,31 +144,32 @@ int count=0;
 public static Boolean IsLLpalindrome(Node head)
 {
 
-    Node temp=head;
-    Node slow=head;
-    Node fast=head;
-    while (fast.next!=null && fast.next.next!=null) {
-        
- slow=slow.next;
- fast=fast.next;
-    }
-    Node newhead=reverseList(slow.next);
-    Node first=head;
-    Node second=newhead;
+    if (head == null || head.next == null) return true;
 
-    while(second!=null)
-    {
-           if(first.data!=second.data)
-           {
-            reverseList(newhead);
-            return false;
-           }
-           first=first.next;
-           second=second.next;
-
+    Node slow = head;
+    Node fast = head;
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
     }
-    reverseList(newhead);
-    return true;
+    // For odd length lists, skip the middle node
+    Node secondHalfStart = (fast != null) ? slow.next : slow;
+    Node secondReversed = reverseList(secondHalfStart);
+
+    Node first = head;
+    Node second = secondReversed;
+    boolean isPal = true;
+    while (second != null) {
+        if (first.data != second.data) {
+            isPal = false;
+            break;
+        }
+        first = first.next;
+        second = second.next;
+    }
+    // restore
+    reverseList(secondReversed);
+    return isPal;
 }
 
 //Delete Nth node from back
@@ -180,46 +177,42 @@ public static Boolean IsLLpalindrome(Node head)
 
 public static Node DeleteNthBack(Node head,int n)
 {
-  Node fast=head;
-  Node slow=head;
-
-  for(int i=0;i<n;i++){
-    fast=fast.next;
-  }
-
-  if(fast==null) return head.next;//edge case
-
-  while (fast.next!=null) {
-    slow=slow.next;
-    fast=fast.next;
-  }
-  slow.next=slow.next.next;
-  return head;
-
+    if (head == null || n <= 0) return head;
+    Node dummy = new Node(0, head);
+    Node fast = dummy;
+    Node slow = dummy;
+    // advance fast by n+1 steps
+    for (int i = 0; i <= n; i++) {
+        if (fast == null) return head; // n is larger than list length
+        fast = fast.next;
+    }
+    while (fast != null) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+    if (slow.next != null) slow.next = slow.next.next;
+    return dummy.next;
 
 }
+
 
 //Delete middle node
 
 public static Node DeleteMiddleNode(Node head)
 {
 
-Node slow=head;
-Node fast=head;
-Node temp=head;
-
-// Edge case: list is empty or has only one node
-    if (head == null || head.next == null)
-        return null;
-
-  while (fast != null && fast.next != null) {
- temp=slow;
-    slow=slow.next;
-    fast=fast.next.next;
-
-}
-temp.next=temp.next.next;
-return head;
+    if (head == null || head.next == null) return null;
+    Node slow = head;
+    Node fast = head;
+    Node prev = null;
+    while (fast != null && fast.next != null) {
+        prev = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    // remove slow (middle)
+    if (prev != null) prev.next = slow.next;
+    return head;
 
 }
 
@@ -311,6 +304,7 @@ Node temp=head;
 while (temp!=null) {
    
     
+    
     if(temp.data==0)
     {
 
@@ -387,7 +381,7 @@ public static Node IntersectionNode(Node head1,Node head2)
     }
     else
     {
-        for(int j=1;j<=diff;j++)
+        for(int i=0;i<diff;i++)
         {
             t1=t1.next;
         }
@@ -406,7 +400,7 @@ public static Node IntersectionNode(Node head1,Node head2)
 }
 
     public static void main(String[] args) {
-        int[] arr = { 5,2,1,3,6, 6, 78, 7 };
+        int[] arr = { 1,2,3,2,1 };
         int[] ar2=  {0,1,2,1,2,0,0,2,1};
         // Node Node1 = new Node(arr[2], null);a = Node("A")
         Node head1 = new Node(1);
@@ -428,8 +422,8 @@ public static Node IntersectionNode(Node head1,Node head2)
 
         // System.out.println(Node1.data);
         //Node head = ConArrToLL(arr);
-        Node head = ConArrToLL(ar2);
-         head=SortLinkList(head);
+        Node head = ConArrToLL(arr);
+         //head=SortLinkList(head);
         // head=reverseList(head);
         // head=RecursiveReverse(head)
         // System.out.println(DetectLoop(a));
@@ -440,8 +434,8 @@ public static Node IntersectionNode(Node head1,Node head2)
        //head=DeleteMiddleNode(head);
       // head=SortLinkList(head);
         Node temp = head;
-       // Boolean flag=IsLLpalindrome(a);
-       // System.out.println("the List"+ " "+flag);
+        Boolean flag=IsLLpalindrome(temp);
+        System.out.println("the List"+ " "+flag);
 
 Node result = IntersectionNode(head1, head2);
         if (result != null) {

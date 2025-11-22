@@ -5,26 +5,20 @@ public class ArrayDSA {
     
 public static void UnionArray(int[] arr,int[] ar2)
 {
-for(int i=0;i<arr.length;i++){
-    for(int j=0;j<ar2.length;j++)
-    {
-             if(arr[i]<ar2[j]){
-                System.out.print(arr[i]);
-     
-                i++;
-             }
-             else if(arr[i]>ar2[j]){
-                System.out.print(ar2[j]); 
-                j++;
-             }
-             else
-             {
-                System.out.print(ar2[j]);
-                
-             }
+    // Simple union implementation using a HashSet.
+    // Prints unique elements from first array followed by new elements from second array.
+    Set<Integer> set = new HashSet<>();
+    if (arr != null) {
+        for (int x : arr) {
+            if (set.add(x)) System.out.print(x + " ");
+        }
     }
-    
-}
+    if (ar2 != null) {
+        for (int x : ar2) {
+            if (set.add(x)) System.out.print(x + " ");
+        }
+    }
+    System.out.println();
 
 }
 
@@ -44,8 +38,8 @@ static int secondLargest(int[] arr){
     int max=arr[0];
     for(int i=1;i<arr.length-1;i++){
          if(arr[i]>max && arr[i]>secondLargest){
+             secondLargest=max;
             max=arr[i];
-            secondLargest=max;
          }
     }
     return secondLargest;
@@ -57,6 +51,15 @@ static int[] rotateleft(int[] arr){
     }
     arr[arr.length-1]=temp;
     return arr;
+}
+//from copilot
+static int[] rotateleftCopy(int[] arr){
+    if (arr == null || arr.length <= 1) return arr;
+    int n = arr.length;
+    int[] out = new int[n];
+    for (int i = 0; i < n - 1; i++) out[i] = arr[i + 1];
+    out[n - 1] = arr[0];
+    return out;
 }
 
 static int[] rotateDpositions(int[] arr,int position){
@@ -107,7 +110,7 @@ static int consecutiveOnes(int[] arr){
     }
     return max;
 }
-//SubArray with Sum K
+//SubArray with Sum K 
 static int SubArrayWithSum(int arr[],int k){
  int sum=0,counter=0,max=0;
 for(int i=0;i<arr.length;i++)
@@ -180,6 +183,24 @@ static int[] SortedZeroesOnestwos(int[] arr) {
     }
     return arr;
 }
+static int maxLenSubarrayWithSumLE(int[] arr, int k) {
+    int left = 0, sum = 0, max = 0;
+    for (int right = 0; right < arr.length; right++) {
+        // if a single element exceeds k, it cannot belong to any valid window;
+        // reset window to the next index
+        if (arr[right] > k) {
+            sum = 0;
+            left = right + 1;
+            continue;
+        }
+        sum += arr[right];
+        while (sum > k && left <= right) {
+            sum -= arr[left++];
+        }
+        max = Math.max(max, right - left + 1);
+    }
+    return max;
+}
 
     public static void main(String[] args) {
         int[] ar={1,3,5,7,8};
@@ -193,7 +214,7 @@ static int[] SortedZeroesOnestwos(int[] arr) {
         //     st.add(ar2[i]);  
         // }
         System.out.println("two sum");
-        System.out.println(twoSum(ar, 12));
+       // System.out.println(twoSum(ar, 12));
         //  for (int i : twoSum(ar, 12)) {
         //     System.out.println(i);
         // }
@@ -221,11 +242,13 @@ System.out.println("The sorted array STH_Algo");
         //     System.out.print(i);
         //  }
         //  System.out.println();
-        // System.out.print("Secondlargest");
-        // //System.out.println(secondLargest(ar));
+         System.out.print("Secondlargest");
+        System.out.println(secondLargest(ar));
         // System.out.println("Set elements" + st);
         // System.out.println(st.size());
        // UnionArray(ar,ar2);
+    System.out.println("\nUnion of ar and ar2:");
+    UnionArray(ar, ar2);
         // boolean flagresponse=sortedArray(ar);
         // if (flagresponse) {
         //     System.out.println("its sorted");
