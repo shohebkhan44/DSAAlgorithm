@@ -73,19 +73,13 @@ public static int UpperBound(int[] arr,int x)
 }
 //first and last Occurence
 
-public static int[] FirtAndLastOccurence(int[] arr,int x){
+public static int[] FirstAndLastOccurence(int[] arr,int x){
 int lb=LowerBound(arr,x);
 int ub=UpperBound(arr,x);
-if(arr[lb]!=x && arr[ub-1]!=x){
-  return new int[]{-1,-1};
-}
-if(arr[lb]==x && arr[ub-1]==x)
-{
-return new int[]{lb,ub-1};
-}
-else{
-  return new int[]{-1,-1};
-}
+ if (lb == arr.length || arr[lb] != x) {
+        return new int[]{-1, -1};
+    }
+    return new int[]{lb, ub - 1};
 }
 //find Floor and ciel
 public static int Floor(int[] arr,int x){
@@ -209,13 +203,16 @@ index=mid;
 return index;
 }
 public static void main(String[] args) {
-    int array[]={2,3,4,5,1};
+    int array[]={1,2,3,4,4,5};
       int target=79;
 
     int ans=BinarySearch(target,array);
   //  System.out.println("ur element");
   //   System.out.println("the elemnt found at index"+ ans);
-  //   //System.out.println(FirtAndLastOccurence(array,8));
+  int[] occ = FirstAndLastOccurence(array, 4);
+  for (int i : occ) {
+    System.out.println(i);
+  }
   //   System.out.println(LowerBound(array, 8));
   //   System.out.println(UpperBound(array, 8));
    
@@ -223,10 +220,10 @@ public static void main(String[] args) {
   //     System.out.println(i);
   //   }
    // System.out.println("The floor from the given array is"+ Floor(array,9));
-   System.out.print("index at");
-   System.out.println(SearchRotated(array, 6));
-   System.out.println(MinimumInRotatedSortedArray(array));
-   System.out.println(TimesofArraySorted(array));
+  //  System.out.print("index at");
+  //  System.out.println(SearchRotated(array, 6));
+  //  System.out.println(MinimumInRotatedSortedArray(array));
+  //  System.out.println(TimesofArraySorted(array));
 
 
 
