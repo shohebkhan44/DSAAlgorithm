@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class BinarySearchAnswers {
 
-    // find the square root of given interger/number
+    // find the squ
+    //  root of given interger/number
 
     public static int SqrtBS(int num) {
         int ans = 1;
@@ -22,6 +23,10 @@ public class BinarySearchAnswers {
         }
 
         return ans;
+
+//
+
+
     }
 
     // helper function fr below program
@@ -65,9 +70,9 @@ public class BinarySearchAnswers {
 
     // helper function for below code
 
-    public static int CountHours(int mid, int arr[]) {
+    public static long CountHours(int mid, int arr[]) {
 
-        int totalhrs = 0;
+        long totalhrs = 0;
         for (int i = 0; i < arr.length; i++) {
             totalhrs += Math.ceil((double) arr[i] / mid);
 
@@ -79,24 +84,22 @@ public class BinarySearchAnswers {
 
     public static int KokoEatingBananaBS(int piles[], int hours) {
 
-        int low = 1;
-        int high = Arrays.stream(piles).max().getAsInt();
+    if (piles == null || piles.length == 0) {
+        throw new IllegalArgumentException("piles must be non-empty");
+    }
 
-        int ans = 999999;
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            // if(CountHours(mid,piles)==hours){
-            // return mid;
-            // }
-            if (CountHours(mid, piles) <= hours) {
-                ans = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
+    int low = 1;
+    int high = Arrays.stream(piles).max().getAsInt();
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2; // safer midpoint
+        if (CountHours(mid, piles) <= hours) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
         }
-        return low;
-
+    }
+    return low;
     }
 
     // Minimum day to make M bouquets with K adjacent flowers
@@ -157,7 +160,7 @@ public class BinarySearchAnswers {
     public static int SmallestDivisor(int[] numbers, int threshold) {
         int low = 1;
         int high = Arrays.stream(numbers).max().getAsInt();
-        int ans =999999999;//chnge to larget possibe value
+        int ans =Integer.MAX_VALUE;//chnge to larget possibe value
         while (low <= high) {
 
             int mid = (low + high) / 2;
@@ -200,7 +203,7 @@ return ans;
         for(int i=0;i<weight.length;i++) {
             sum+=weight[i];
         }
-        int high=sum;int ans=99999999;
+        int high=sum;int ans=Integer.MAX_VALUE;
 
         while (low<=high) {
             int mid=(low+high)/2;
@@ -236,7 +239,7 @@ return ans;
         return low+k;
     }
     public static void main(String[] args) {
-        int num = 27;
+        int num = 36;
         int n = 4;
         int m = 256;
         int[] piles = { 3, 6, 7, 11 };
@@ -244,12 +247,12 @@ return ans;
         int [] smallDiv={1,2,5,9};
         int [] KthMissing={2,3,4,7,11};
         int [] Loads={1,2,3,4,5,6,7,8,9,10};
-        // System.out.println("square root of"+ num +"is"+SqrtBS(num));
+        System.out.println("square root of"+ num +"is"+SqrtBS(num));
         // System.out.println(n + " root of" + " " + m + " " + "is" + " " + NthRootBS(n, m));
         // System.out.println("The minimum rate at which koko can eat is" + " " + KokoEatingBananaBS(piles, 8));
         // System.out.println(MinDaysforBouquets(Days, 2, 3));
        // System.out.println("the smallest divisor is"+ SmallestDivisor(smallDiv, 6));
        //System.out.println("least capacity"+ LeastCapacity(Loads, 5));
-       System.out.println(KthMissing(KthMissing,5));
+       //System.out.println(KthMissing(KthMissing,5));
     }
 }
