@@ -183,7 +183,8 @@ public static Node DeleteNthBack(Node head,int n)
     Node slow = dummy;
     // advance fast by n+1 steps
     for (int i = 0; i <= n; i++) {
-        if (fast == null) return head; // n is larger than list length
+        if (fast == null) 
+            return head; // n is larger than list length
         fast = fast.next;
     }
     while (fast != null) {

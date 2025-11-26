@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LinkedLiastMedium",
+            "request": "launch",
+            "mainClass": "LinkedLiastMedium",
+            "projectName": "DSAAlgorithm_e5fac23a"
+        },
+        {
+            "type": "java",
             "name": "LinkedListIntro",
             "request": "launch",
             "mainClass": "LinkedListIntro",
