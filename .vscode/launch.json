@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StacksAndQueues",
+            "request": "launch",
+            "mainClass": "StacksAndQueues",
+            "projectName": "DSAAlgorithm_e5fac23a"
+        },
+        {
+            "type": "java",
             "name": "LinkedLiastMedium",
             "request": "launch",
             "mainClass": "LinkedLiastMedium",
