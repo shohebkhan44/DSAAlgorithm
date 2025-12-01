@@ -111,22 +111,56 @@ private static int precedence(char operator) {
     }
 }
 
-//implement minimum Stack
+//next greater element
 
+public static int[] nextGreaterElement(int[] nums) {
+    int n = nums.length;
+    int[] result = new int[n];
+    Stack<Integer> stack = new Stack<>();
+    for (int i = n - 1; i >= 0; i--) {
+        while (!stack.isEmpty() && stack.peek() <= nums[i]) {
+            stack.pop();
+        }
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
+        stack.push(nums[i]);
+    }
+    return result;
+}
 
+//previous smaller element
+public static int[] previousSmallerElement(int[] nums) {
+    int n = nums.length;    
+    int[] result = new int[n];
+    Stack<Integer> stack = new Stack<>();
+    for (int i = 0; i < n; i++) {
+        while (!stack.isEmpty() && stack.peek() >= nums[i]) {
+            stack.pop();
+        }
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
+        stack.push(nums[i]);
+    }
+    return result;
+}
 
     public static void main(String[] args) {
         String infix="a+b*(c^d-e)^(f+g*h)-i";
           System.out.println(BalancedParanthesis("()"));          // true
-    System.out.println(BalancedParanthesis("([]{})"));
-    System.out.println(BalancedParanthesis("([)]"));        // false
-    System.out.println(BalancedParanthesis("(]")); 
-    System.out.println(InfixToPostfix("a+b*(c^d-e)^(f+g*h)-i")); // abcd^e-fgh*+^*+i- 
+    // System.out.println(BalancedParanthesis("([]{})"));
+    // System.out.println(BalancedParanthesis("([)]"));        // false
+    // System.out.println(BalancedParanthesis("(]")); 
+    // System.out.println(InfixToPostfix("a+b*(c^d-e)^(f+g*h)-i")); // abcd^e-fgh*+^*+i- 
      
 
-     System.out.println("Infix  : " + infix);
-        System.out.println("Prefix : " + infixToPrefix(infix));
-
-
+    //  System.out.println("Infix  : " + infix);
+    //     System.out.println("Prefix : " + infixToPrefix(infix));
+int[] result = nextGreaterElement(new int[]{4,5,2,10,8});
+for (int val : result) {
+    System.out.print(val + " ");
+}
+System.out.println();
+int[] result2 = previousSmallerElement(new int[]{5,3,2,1,10,11,5,6,3});
+for (int val : result2) {
+    System.out.print(val + " ");
+}
     }
 }
