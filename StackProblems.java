@@ -141,7 +141,96 @@ public static int[] previousSmallerElement(int[] nums) {
     }
     return result;
 }
+//trapping rain water
+public static int trappingRainWater(int[] height) {
 
+    // Implementation goes here
+    int Rmax=0;
+    int Lmax=0;
+    int totalwater=0;
+    int left=0;
+    int right=height.length-1;
+
+    while (left<right) {
+
+        if (height[left]<=height[right]) {
+            if (height[left]>=Lmax) {
+                Lmax=height[left];
+            } else {
+                totalwater+=Lmax-height[left];
+            }
+            left++;
+        } else {
+            if (height[right]>=Rmax) {
+                Rmax=height[right];
+            } else {
+                totalwater+=Rmax-height[right];
+            }
+            right--;
+        }
+        
+    }
+    return totalwater;
+
+}
+
+//sum of subarray minimums
+public static int sumOfSubarrayMinimums(int[] arr) {
+    int n = arr.length;
+    // Array to store distances to next smaller elements
+    int[] left = new int[n];
+    // Array to store distances to previous smaller elements
+    int[] right = new int[n];
+  //adding comments for clarity
+
+    Stack<Integer> stack = new Stack<>();
+    for (int i = 0; i < n; i++) {
+        // Calculate left distances
+        while (!stack.isEmpty() && arr[stack.peek()] > arr[i]) {
+            stack.pop();
+            // Pop elements greater than current element
+            // to find the previous smaller element
+            // and calculate the distance
+            // for subarray minimums
+            // This helps in determining how many subarrays
+            // can have arr[i] as their minimum
+        }
+        left[i] = stack.isEmpty() ? i + 1 : i - stack.peek();
+        // If stack is empty, all previous elements are greater
+        // Otherwise, calculate distance to previous smaller element
+        // This distance contributes to the count of subarrays
+        // where arr[i] is the minimum
+        // Push current index onto stack
+        stack.push(i);
+    }
+    // Clear stack for right distance calculation
+    stack.clear();
+    for (int i = n - 1; i >= 0; i--) {  
+        // Calculate right distances
+        // Iterate from right to left
+        // to find the next smaller element
+        // and calculate the distance
+        // for subarray minimums
+        // This helps in determining how many subarrays
+        // can have arr[i] as their minimum
+        while (!stack.isEmpty() && arr[stack.peek()] >= arr[i]) {
+            stack.pop();
+        }
+        right[i] = stack.isEmpty() ? n - i : stack.peek() - i;
+        // Calculate right distances
+        stack.push(i);
+    }
+    long result = 0;
+    // Calculate final result using left and right distances
+    int mod = 1_000_000_007;
+    for (int i = 0; i < n; i++) {
+        // Each element's contribution to the sum of subarray minimums
+        // is its value multiplied by the number of subarrays
+        // in which it is the minimum
+        result = (result + (long) arr[i] * left[i] * right[i]) % mod;
+    }
+    return (int) result;
+}
     public static void main(String[] args) {
         String infix="a+b*(c^d-e)^(f+g*h)-i";
           System.out.println(BalancedParanthesis("()"));          // true
