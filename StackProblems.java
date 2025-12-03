@@ -228,9 +228,89 @@ public static int sumOfSubarrayMinimums(int[] arr) {
         // is its value multiplied by the number of subarrays
         // in which it is the minimum
         result = (result + (long) arr[i] * left[i] * right[i]) % mod;
+        //why divide by mod?
+        // To prevent integer overflow and keep the result within the range of int
+        //example: if result exceeds 1_000_000_007, taking modulo ensures
+        // that we get a manageable number that fits within the integer limits
+        //does not affect the correctness of the final result
+        // since we are only interested in the result modulo 1_000_000_007
+        //
     }
     return (int) result;
 }
+
+//collision of asteroids
+//to be implemented 
+
+public static void  asteroidCollision(int[] asteroids) {
+    Stack<Integer> stack = new Stack<>();
+    for (int asteroid : asteroids) {    
+        if (asteroid > 0) {
+            //commeting each line for clarity
+            // If asteroid is moving right, push onto stack
+            // Right-moving asteroids are simply added to the stack
+            stack.push(asteroid);
+        } else {
+            // Handle collisions with left-moving asteroid
+            // While there are right-moving asteroids on the stack
+            // and the top of the stack is smaller than the left-moving asteroid
+            // Pop the smaller right-moving asteroids
+            while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -asteroid) {
+                stack.pop();
+            }
+            if (stack.isEmpty() || stack.peek() < 0) {
+                // If stack is empty or top is left-moving, push the left-moving asteroid
+                stack.push(asteroid);
+                // Left-moving asteroid survives as there are no collisions
+            } else if (stack.peek() == -asteroid) {
+                // If top of stack is equal in size but opposite direction, both explode
+                stack.pop();
+            }
+        }
+    }
+    // Convert stack to array for result
+    int[] result = new int[stack.size()];   
+    for (int i = result.length - 1; i >= 0; i--) {
+        result[i] = stack.pop();
+    }
+    // You might want to return or print the result array here
+    // For example, to print the result:
+    for (int val : result) {
+        System.out.print(val + " ");
+    }
+    System.out.println();
+}
+
+
+//remove k digits
+//to be implemented
+
+public static String removeKdigits(String num, int k) {
+    Stack<Character> stack = new Stack<>(); 
+    for (char digit : num.toCharArray()) {
+        while (k > 0 && !stack.isEmpty() && stack.peek() > digit) {
+            stack.pop();
+            k--;
+        }
+        stack.push(digit);
+    }
+    while (k > 0) {
+        stack.pop();
+        k--;
+    }
+    StringBuilder result = new StringBuilder();
+    while (!stack.isEmpty()) {
+        result.append(stack.pop());
+    }   
+    result.reverse();
+    // Remove leading zeros
+    while (result.length() > 1 && result.charAt(0) == '0') {
+        result.deleteCharAt(0);
+    }
+    return result.toString();
+}
+
+
     public static void main(String[] args) {
         String infix="a+b*(c^d-e)^(f+g*h)-i";
           System.out.println(BalancedParanthesis("()"));          // true
@@ -251,5 +331,8 @@ int[] result2 = previousSmallerElement(new int[]{5,3,2,1,10,11,5,6,3});
 for (int val : result2) {
     System.out.print(val + " ");
 }
+System.out.println();
+int[] height={0,1,0,2,1,0,1,3,2,1,2,1};
+System.out.println(trappingRainWater(height)); //6
     }
 }
