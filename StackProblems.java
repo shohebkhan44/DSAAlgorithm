@@ -1,3 +1,5 @@
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class StackProblems {
@@ -308,6 +310,65 @@ public static String removeKdigits(String num, int k) {
         result.deleteCharAt(0);
     }
     return result.toString();
+}
+//stockspan brute force
+public static int[] stockSpanBruteForce(int[] prices) {
+    int n = prices.length;  
+    int[] span = new int[n];  
+    for (int i = 0; i < n; i++) {
+        span[i] = 1;  
+        for (int j = i - 1; j >= 0 && prices[j] <= prices[i]; j--) {
+            span[i]++;  
+        }
+    }
+    return span;
+}
+//using stack
+public static int[] stockSpanUsingStack(int[] prices) { 
+    int n = prices.length;  
+    int[] span = new int[n];    
+
+    Stack<Integer> stack = new Stack<>();
+    for (int i = 0; i < n; i++) {
+        while (!stack.isEmpty() && prices[stack.peek()] <= prices[i]) {
+            stack.pop();
+        }
+        span[i] = stack.isEmpty() ? (i + 1) : (i - stack.peek());
+        stack.push(i);
+    }
+    return span;
+}
+//sliding window maximum
+//to be implemented
+public static int[] slidingWindowMaximum(int[] nums, int k) {
+    int n = nums.length;    
+    // Edge cases
+    //this handles scenarios where the input array is empty or the window size is 1
+    // If either condition is true, we can directly return the appropriate result
+    if (n * k == 0) return new int[0];
+    if (k == 1) return nums;
+    int[] result = new int[n - k + 1];
+    // Deque to store indices of useful elements in current window
+    Deque<Integer> deque = new LinkedList<>();
+    for (int i = 0; i < n; i++) {
+        // Remove indices of elements not in the current window
+        if (!deque.isEmpty() && deque.peek() < i - k + 1) {
+            // Remove the index at the front if it's out of the window
+            deque.poll();
+        }
+        // Remove indices of elements smaller than the current element
+        while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+            // Remove from back while current element is greater
+            deque.pollLast();
+        }
+        // Add current element's index to the deque
+        deque.offer(i);
+        // The front of the deque is the largest element for the current window
+        if (i >= k - 1) {
+            result[i - k + 1] = nums[deque.peek()];
+        }
+    }
+    return result;
 }
 
 
