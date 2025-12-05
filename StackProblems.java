@@ -371,6 +371,69 @@ public static int[] slidingWindowMaximum(int[] nums, int k) {
     return result;
 }
 
+//Celebrity Problem
+//to be implemented
+public static int findCelebrity(int[][] matrix) {
+    int n = matrix.length;
+    Stack<Integer> stack = new Stack<>();
+    //declaration of stack to hold potential celebrities
+    for (int i = 0; i < n; i++) {
+        // Push all people onto the stack
+        stack.push(i);
+    }
+    while (stack.size() > 1) {
+        // While more than one person remains
+        // Pop two people from the stack
+        int a = stack.pop();
+        int b = stack.pop();
+        // Determine who knows whom
+        if (matrix[a][b] == 1) {
+            // If a knows b, then a cannot be the celebrity
+            stack.push(b);
+        } else {
+            // If a does not know b, then b cannot be the celebrity
+            stack.push(a);
+        }
+    }
+    int candidate = stack.pop();
+    // Verify the candidate
+    // Check if the candidate knows anyone else or if anyone doesn't know the candidate
+    for (int i = 0; i < n; i++) {
+        if (i != candidate && (matrix[candidate][i] == 1 || matrix[i][candidate] == 0)) {
+            // If candidate knows someone or someone doesn't know candidate
+            // Not a celebrity
+        
+            return -1;
+        }
+    }
+    return candidate;
+}
+
+    //celebrity problem using two pointer
+
+    public static int findCelebrityTwoPointer(int[][] matrix) {
+        int n = matrix.length;
+        int a = 0;
+        int b = n - 1;
+        while (a < b) {
+            if (matrix[a][b] == 1) {
+                // a knows b, so a cannot be celebrity
+                a++;
+            } else {
+                // a does not know b, so b cannot be celebrity
+                b--;
+            }
+        }
+        int candidate = a;
+        // Verify the candidate
+        for (int i = 0; i < n; i++) {
+            if (i != candidate && (matrix[candidate][i] == 1 || matrix[i][candidate] == 0)) {
+                return -1; // Not a celebrity
+            }
+        }
+        return candidate;
+}
+
 
     public static void main(String[] args) {
         String infix="a+b*(c^d-e)^(f+g*h)-i";
