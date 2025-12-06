@@ -9,7 +9,7 @@ public static Boolean BalancedParanthesis(String s) {
     Stack<Character> st = new Stack<>();
     char[] str = s.toCharArray();
 
-    for (int i = 0; i < str.length; i++) {
+    for (int i = 0; i < str.length; i++) {/////////////////////
 
         // If opening bracket → push to stack
         if (str[i] == '(' || str[i] == '[' || str[i] == '{') {
@@ -49,14 +49,17 @@ public static String InfixToPostfix(String infix) {
     for (char c : infix.toCharArray()) {
         if (Character.isLetterOrDigit(c)) {
             postfix.append(c); // Add operands directly to output
-        } else if (c == '(') {
+        }
+        else if (c == '(') {
             stack.push(c); // Push '(' onto stack
-        } else if (c == ')') {
+        }
+        else if (c == ')') {
             while (!stack.isEmpty() && stack.peek() != '(') {
                 postfix.append(stack.pop()); // Pop until '('
             }
             stack.pop(); // Pop the '('
-        } else { // Operator case
+        }
+        else { // Operator case
             while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) {
                 postfix.append(stack.pop()); // Pop operators with higher or equal precedence
             }
@@ -121,8 +124,12 @@ public static int[] nextGreaterElement(int[] nums) {
     Stack<Integer> stack = new Stack<>();
     for (int i = n - 1; i >= 0; i--) {
         while (!stack.isEmpty() && stack.peek() <= nums[i]) {
+            //if current element is greater than or equal to top of stack,
+            //  pop the stack
             stack.pop();
         }
+        //if stack is empty, no greater element to the right
+        // else, the top of the stack is the next greater element
         result[i] = stack.isEmpty() ? -1 : stack.peek();
         stack.push(nums[i]);
     }
@@ -154,20 +161,34 @@ public static int trappingRainWater(int[] height) {
     int right=height.length-1;
 
     while (left<right) {
-
+//explaining each step
+// Compare heights at left and right pointers
+// Move the pointer with the smaller height
+// Update Lmax or Rmax accordingly
         if (height[left]<=height[right]) {
-            if (height[left]>=Lmax) {
+            // Move left pointer
+            if (height[left]>=Lmax) {// Update Lmax if current height is greater
+        
                 Lmax=height[left];
+                // No water trapped at this position
             } else {
+                // Water trapped is difference between Lmax and current height
+                // Add trapped water to total
                 totalwater+=Lmax-height[left];
             }
+            // Move left pointer to the right
             left++;
         } else {
+            // Move right pointer
             if (height[right]>=Rmax) {
+                // Update Rmax if current height is greater
                 Rmax=height[right];
             } else {
+                // Water trapped is difference between Rmax and current height
+                // Add trapped water to total
                 totalwater+=Rmax-height[right];
             }
+            // Move right pointer to the left
             right--;
         }
         
@@ -252,7 +273,8 @@ public static void  asteroidCollision(int[] asteroids) {
             // If asteroid is moving right, push onto stack
             // Right-moving asteroids are simply added to the stack
             stack.push(asteroid);
-        } else {
+        } 
+        else {
             // Handle collisions with left-moving asteroid
             // While there are right-moving asteroids on the stack
             // and the top of the stack is smaller than the left-moving asteroid
@@ -458,5 +480,9 @@ for (int val : result2) {
 System.out.println();
 int[] height={0,1,0,2,1,0,1,3,2,1,2,1};
 System.out.println(trappingRainWater(height)); //6
+int[] arr={3,1,2,4};
+//for asteroid collision
+asteroidCollision(new int[]{4,3,-1,2,-3});
+
     }
 }
