@@ -311,24 +311,32 @@ public static void  asteroidCollision(int[] asteroids) {
 
 public static String removeKdigits(String num, int k) {
     Stack<Character> stack = new Stack<>(); 
+    //commenting each step for clarity
     for (char digit : num.toCharArray()) {
         while (k > 0 && !stack.isEmpty() && stack.peek() > digit) {
+            // Remove larger digits to form smaller number
             stack.pop();
+            // Decrement k as we have removed a digit
             k--;
         }
+        // Push current digit onto stack
         stack.push(digit);
     }
     while (k > 0) {
+        // If k digits are still to be removed, remove from the end
         stack.pop();
         k--;
     }
     StringBuilder result = new StringBuilder();
     while (!stack.isEmpty()) {
+        // Build the result from the stack
         result.append(stack.pop());
     }   
     result.reverse();
+    // Final result is in reverse order, so reverse it back
     // Remove leading zeros
     while (result.length() > 1 && result.charAt(0) == '0') {
+        // Remove the leading zero character
         result.deleteCharAt(0);
     }
     return result.toString();
@@ -349,13 +357,21 @@ public static int[] stockSpanBruteForce(int[] prices) {
 public static int[] stockSpanUsingStack(int[] prices) { 
     int n = prices.length;  
     int[] span = new int[n];    
-
+//commenting each step for clarity
     Stack<Integer> stack = new Stack<>();
+    // Push index of first day
+    stack.push(0);
     for (int i = 0; i < n; i++) {
+        // Calculate span for day i
         while (!stack.isEmpty() && prices[stack.peek()] <= prices[i]) {
+            // Pop indices of days with prices less than or equal to current day's price
+            // This helps in finding the last day with a higher price
             stack.pop();
         }
         span[i] = stack.isEmpty() ? (i + 1) : (i - stack.peek());
+        // If stack is empty, all previous prices are less than or 
+        // [equal to current price
+        // Otherwise, calculate span based on the last higher price's index
         stack.push(i);
     }
     return span;
