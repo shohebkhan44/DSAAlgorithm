@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TreesIntroduction",
+            "request": "launch",
+            "mainClass": "TreesDSA.TreesIntroduction",
+            "projectName": "DSAAlgorithm_e5fac23a"
+        },
+        {
+            "type": "java",
             "name": "MinStack",
             "request": "launch",
             "mainClass": "MinStack",
