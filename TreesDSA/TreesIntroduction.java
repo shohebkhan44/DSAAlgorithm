@@ -69,6 +69,97 @@ public static Node PostorderTraversal(Node node) {
     System.out.print(node.value + " ");
     return node;
 }
+
+//level order traversal
+
+public static Node LevelOrderTraversal(Node node) {
+    if (node == null) {
+        return null;
+    }
+    java.util.Queue<Node> queue = new java.util.LinkedList<>();
+    queue.add(node);
+    while (!queue.isEmpty()) {
+        // here we are using poll() method to retrieve and remove the head of the queue
+        Node current = queue.poll();
+        // Process the current node
+        System.out.print(current.value + " ");
+        if (current.left != null) {
+            queue.add(current.left);
+        }
+        if (current.right != null) {
+            queue.add(current.right);
+        }
+    }
+    return node;
+}
+//iterative preorder traversal
+public static void IterativePreorderTraversal(Node root) {
+    if (root == null) {
+        return;
+    }
+    java.util.Stack<Node> stack = new java.util.Stack<>();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+        Node current = stack.pop();
+        System.out.print(current.value + " ");
+        if (current.right != null) {
+            stack.push(current.right);
+        }
+        //why first left then right? because stack is LIFO, so we push right 
+        //  first to ensure left is processed first    
+        if (current.left != null) {
+            stack.push(current.left);
+        }
+    }
+}
+//iterative inorder traversal
+
+public static void InorderIterativeTraversal(Node root) {
+    if (root == null) {
+        return;
+    }   
+    java.util.Stack<Node> stack = new java.util.Stack<>();
+    Node current = root;
+    while (current != null || !stack.isEmpty()) {
+        while (current != null) {
+            stack.push(current);
+            current = current.left;
+        }
+        current = stack.pop();
+        System.out.print(current.value + " ");
+        current = current.right;
+    }
+}   
+//postorder iterative traversal
+public static void PostorderIterativeTraversal(Node root) {
+    if (root == null) {
+        return;
+    }
+    java.util.Stack<Node> stack1 = new java.util.Stack<>();
+    java.util.Stack<Node> stack2 = new java.util.Stack<>();
+    stack1.push(root);
+    while (!stack1.isEmpty()) {
+        //write comments explaining the logic
+        // Pop a node from stack1 and push it onto stack2
+        // Push the left and right children of the popped node onto stack1
+        // This way, stack2 will have the nodes in postorder sequence
+        // Finally, pop all nodes from stack2 to get the postorder traversal
+        Node current = stack1.pop();
+        stack2.push(current);
+        if (current.left != null) {
+            stack1.push(current.left);
+        }
+        if (current.right != null) {
+            stack1.push(current.right);
+        }
+    }
+    while (!stack2.isEmpty()) {
+        Node current = stack2.pop();
+        System.out.print(current.value + " ");
+    }
+}
+
+    
     public static void main(String[] args) {
         System.out.println("This class provides an introduction to Trees \n in Data Structures and Algorithms.");
 
@@ -93,11 +184,17 @@ public static Node PostorderTraversal(Node node) {
         System.out.println("   " + root.left.left.value + "  " + root.left.right.value + " " + root.right.left.value + "  " + root.right.right.value);
         System.out.println("      /       / \\");
         System.out.println("     " + root.left.right.left.value + "      " + root.right.right.left.value + "  " + root.right.right.right.value);
-       PreorderTraversal(root);
+      System.out.println("Predorder" + PreorderTraversal(root));
        System.out.println();
-       InorderTraversal(root);
+      System.out.println("Inorder" + InorderTraversal(root));
        System.out.println();
-       PostorderTraversal(root);
+       System.out.println("Postorder" + PostorderTraversal(root));
+       System.out.println();
+       System.out.println("Level Order" + LevelOrderTraversal(root));
+       System.out.println();
+       System.out.println("Iterative Preorder Traversal: ");
+       IterativePreorderTraversal(root);
+       System.out.println();
        //time complexity of tree traversals is O(n) where n is number of nodes in the tree
        //space complexity is O(h) where h is height of the tree due to recursive stack space
     }
