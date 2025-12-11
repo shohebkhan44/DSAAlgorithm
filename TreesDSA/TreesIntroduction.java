@@ -27,15 +27,13 @@ public class TreesIntroduction {
     // 4. Red-Black Tree: A self-balancing binary search tree with additional properties to ensure balance.
     // 5. N-ary Tree: A tree where nodes can have more than two children.
 
-    int value;
-    Node left;
-    Node right;
-    void Node(int value) {
-        this.value = value;
-        left = null;
-        right = null;
-    }
-
+// Tree Traversal Methods:
+// 1. Preorder Traversal: Visit the root node first, then recursively traverse the
+// left subtree, followed by the right subtree.
+// 2. Inorder Traversal: Recursively traverse the left subtree, visit the root node,
+// and then recursively traverse the right subtree.
+// 3. Postorder Traversal: Recursively traverse the left subtree, then the right subtree,
+// and finally visit the root node.
 
 public static Node PreorderTraversal(Node node) {
     if (node == null) {
@@ -158,7 +156,61 @@ public static void PostorderIterativeTraversal(Node root) {
         System.out.print(current.value + " ");
     }
 }
+//using single stack for postorder iterative traversal
+public static void PostorderIterativeSingleStack(Node root) {
+    if (root == null) {
+        return;
+    }
+    java.util.Stack<Node> stack = new java.util.Stack<>();
+    Node current = root;
+    Node lastVisited = null;
+    while (current != null || !stack.isEmpty()) {
+        // Traverse to the leftmost node
+        while (current != null) {
+            // Push the current node onto the stack
+            stack.push(current);
+            current = current.left;
+            // Move to the left child
+        }
+        Node peekNode = stack.peek();
+        // If the right child exists and hasn't been visited yet, move to the right child
+        if (peekNode.right != null && lastVisited != peekNode.right) {
+            // Move to the right child
+            current = peekNode.right;
+            // Continue the loop
+        } else {
+            // If the right child doesn't exist or has already been visited, visit the node
+            // Print the value of the node
+            System.out.print(peekNode.value + " ");
+            lastVisited = stack.pop();
+        }
+    }
+}
 
+//maximum depth od BT
+public static int MaxmimumDepth(Node root){
+
+    if(root==null){
+        return 0;
+    }
+    int lh= MaxmimumDepth(root.left);
+    int rh=MaxmimumDepth(root.right);
+
+    return 1+Math.max(lh,rh);
+
+}
+//balanced BT
+public static boolean isBalanced(Node root){
+    if(root==null){
+        return true;
+    }
+    int lh=MaxmimumDepth(root.left);
+    int rh=MaxmimumDepth(root.right);
+    if(Math.abs(lh-rh)<=1 && isBalanced(root.left) && isBalanced(root.right)){
+        return true;
+    }
+    return false;
+}
     
     public static void main(String[] args) {
         System.out.println("This class provides an introduction to Trees \n in Data Structures and Algorithms.");
