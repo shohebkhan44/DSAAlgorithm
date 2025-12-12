@@ -213,7 +213,7 @@ public static boolean isBalanced(Node root){
 }
     
     public static void main(String[] args) {
-        System.out.println("This class provides an introduction to Trees \n in Data Structures and Algorithms.");
+        System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithms.");
 
         Node root = new Node(1);
         root.left = new Node(2);
