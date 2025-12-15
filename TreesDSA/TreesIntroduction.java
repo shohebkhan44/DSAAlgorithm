@@ -1,5 +1,8 @@
 package TreesDSA;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node {
     int value;
     Node left;
@@ -96,8 +99,8 @@ public class TreesIntroduction {
             }
             if (current.left != null) {
                 queue.add(current.left);
-            }  
-            
+            }
+
         }
         return node;
     }
@@ -263,31 +266,67 @@ public class TreesIntroduction {
             return 0;
         }
 
-        int leftSum = Math.max(0,MaximumSumpath(root.left, Diameter));
-        int rightSum = Math.max(0,MaximumSumpath(root.right, Diameter));
+        int leftSum = Math.max(0, MaximumSumpath(root.left, Diameter));
+        int rightSum = Math.max(0, MaximumSumpath(root.right, Diameter));
 
         Diameter[0] = Math.max(Diameter[0], leftSum + rightSum + root.value);
 
         return root.value + Math.max(leftSum, rightSum);
 
     }
-// isTree similar
+    // isTree similar
 
-public static Boolean IsTreeSame(Node p,Node q){
+    public static Boolean IsTreeSame(Node p, Node q) {
 
-      // both are null → same tree
-    if (p == null && q == null) {
-        return true;
+        // both are null → same tree
+        if (p == null && q == null) {
+            return true;
+        }
+
+        // one is null, the other is not → not same
+        if (p == null || q == null) {
+            return false;
+        }
+        return (p.value == q.value && IsTreeSame(p.left, q.left)
+                && IsTreeSame(p.right, q.right));
+
     }
 
-    // one is null, the other is not → not same
-    if (p == null || q == null) {
-        return false;
-    }
-         return (p.value==q.value && IsTreeSame(p.left, q.left) 
-         && IsTreeSame(p.right, q.right));
+    public static void ZigZagTraversal(Node root) {
+        if (root == null)
+            return;
+        Boolean LeftToRight = true;
+        Queue<Node> que = new LinkedList<>();
+        que.add(root);
+        while (!que.isEmpty()) {
+            int size = que.size();
+            int[] level = new int[size];
+            
 
-}
+            for (int i = 0; i < size; i++) {
+               Node current = que.poll();
+              int  index = LeftToRight ? i : size - 1 - i;
+               level[index]=current.value;
+
+                if(current.left!=null){
+                    que.add(current.left);
+                }
+
+                 if(current.right!=null){
+                    que.add(current.right);
+                }
+
+            }
+            for (int val : level) {
+                System.out.print(" "+val);
+            }
+
+            LeftToRight=!LeftToRight;
+
+        }
+
+    }
+
     public static void main(String[] args) {
         System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithms.");
 
@@ -333,16 +372,16 @@ public static Boolean IsTreeSame(Node p,Node q){
         // tree
         // space complexity is O(h) where h is height of the tree due to recursive stack
         // space
-Node p = new Node(1);
-p.left = new Node(2);
-p.right = new Node(4);
+        Node p = new Node(1);
+        p.left = new Node(2);
+        p.right = new Node(4);
 
-Node q = new Node(1);
-q.left = new Node(2);
-q.right = new Node(3);
+        Node q = new Node(1);
+        q.left = new Node(2);
+        q.right = new Node(3);
 
-System.out.println(IsTreeSame(p, q)); 
-
+        System.out.println(IsTreeSame(p, q));
+   ZigZagTraversal(root);
 
     }
 
