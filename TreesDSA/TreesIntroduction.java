@@ -325,8 +325,133 @@ public class TreesIntroduction {
 
         }
 
+
+
     }
 
+    //Boundry traversal
+
+
+    // Function to print boundary traversal
+   public static void boundaryTraversal(Node root) {
+        if (root == null)
+            return;
+
+        // 1. Print root node
+        System.out.print(root.value + " ");
+
+        // 2. Print left boundary (excluding leaves)
+        printLeftBoundary(root.left);
+
+        // 3. Print all leaf nodes
+        printLeaves(root.left);
+        printLeaves(root.right);
+
+        // 4. Print right boundary (excluding leaves)
+        printRightBoundary(root.right);
+    }
+
+    // Function to print left boundary
+   public static void printLeftBoundary(Node node) {
+        if (node == null)
+            return;
+
+        if (node.left != null) {
+            System.out.print(node.value + " ");
+            printLeftBoundary(node.left);
+        } else if (node.right != null) {
+            System.out.print(node.value + " ");
+            printLeftBoundary(node.right);
+        }
+        // Do nothing if it's a leaf node
+    }
+
+    // Function to print leaf nodes
+   public static void printLeaves(Node node) {
+        if (node == null)
+            return;
+
+        printLeaves(node.left);
+
+        if (node.left == null && node.right == null)
+            System.out.print(node.value + " ");
+
+        printLeaves(node.right);
+    }
+
+    // Function to print right boundary
+   public static void printRightBoundary(Node node) {
+        if (node == null)
+            return;
+
+        if (node.right != null) {
+            printRightBoundary(node.right);
+            System.out.print(node.value + " ");
+        } else if (node.left != null) {
+            printRightBoundary(node.left);
+            System.out.print(node.value + " ");
+        }
+        // Do nothing if it's a leaf node
+    }
+
+    public static boolean isMirror(Node left, Node right) {
+
+    // If both nodes are null, they are symmetric
+    if (left == null && right == null)
+        return true;
+
+    // If one is null and other is not, not symmetric
+    if (left == null || right == null)
+        return false;
+
+    // Check value and recursive mirror condition
+    return (left.value == right.value)
+            && isMirror(left.left, right.right)
+            && isMirror(left.right, right.left);
+}
+public static boolean isSymmetric(Node root) {
+
+    // If tree is empty, it is symmetric
+    if (root == null)
+        return true;
+
+    // Check if left and right subtrees are mirror images
+    return isMirror(root.left, root.right);
+}
+
+//root to node path
+
+public static boolean printRootToNodePath(Node root, int target) {
+
+    // If tree is empty, path does not exist
+    if (root == null)
+        return false;
+
+    // Print current node value
+    System.out.print(root.value + " ");
+
+    // If current node is target, path is found
+    if (root.value == target)
+        return true;
+
+    // Check left subtree
+    if (printRootToNodePath(root.left, target))
+        return true;
+
+    // Check right subtree
+    if (printRootToNodePath(root.right, target))
+        return true;
+
+    // If not found in both subtrees, remove current node from path
+    System.out.print("\b\b"); // removes last printed value (visual purpose)
+    return false;
+}
+
+
+    // Main method
+   
+
+    
     public static void main(String[] args) {
         System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithms.");
 
@@ -382,6 +507,8 @@ public class TreesIntroduction {
 
         System.out.println(IsTreeSame(p, q));
    ZigZagTraversal(root);
+   System.out.println();
+   boundaryTraversal(root);
 
     }
 
