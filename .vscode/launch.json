@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Recursion",
+            "request": "launch",
+            "mainClass": "Recursion.Recursion",
+            "projectName": "DSAAlgorithm_e5fac23a"
+        },
+        {
+            "type": "java",
             "name": "TreesIntroduction",
             "request": "launch",
             "mainClass": "TreesDSA.TreesIntroduction",
