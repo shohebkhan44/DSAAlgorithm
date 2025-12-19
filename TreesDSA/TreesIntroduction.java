@@ -447,6 +447,49 @@ public static boolean printRootToNodePath(Node root, int target) {
     return false;
 }
 
+//Width of a Binary
+
+  private static int BTWidthWithGaps(Node root) {
+    if (root == null)
+        return 0;
+
+    Queue<Object[]> que = new LinkedList<>();
+    que.add(new Object[]{root, 1L}); // root index = 1
+    int maxWidth = 0;
+
+    while (!que.isEmpty()) {
+        int size = que.size();
+
+        // First node index at this level
+        long first = (long) que.peek()[1];
+        long last = 0;
+
+        for (int i = 0; i < size; i++) {
+            Object[] current = que.poll();
+            Node node = (Node) current[0];
+            long index = (long) current[1];
+
+            // Normalize index to avoid large numbers
+            long normalizedIndex = index - first;
+            last = normalizedIndex;
+
+            // Add children with normalized indices
+            if (node.left != null)
+                que.add(new Object[]{node.left, 2 * normalizedIndex});
+            if (node.right != null)
+                que.add(new Object[]{node.right, 2 * normalizedIndex + 1});
+        }
+
+        // Width of this level
+        maxWidth = Math.max(maxWidth, (int) (last + 1));
+    }
+
+    return maxWidth;
+}
+
+
+ 
+
 
     // Main method
    
@@ -509,6 +552,19 @@ public static boolean printRootToNodePath(Node root, int target) {
    ZigZagTraversal(root);
    System.out.println();
    boundaryTraversal(root);
+
+
+    Node roott = new Node(1);
+     roott.left = new Node(2);
+        roott.left.left = new Node(4);
+        roott.left.left.left = new Node(6);   // Extreme left leaf
+
+        // Right side chain
+        roott.right = new Node(3);
+        roott.right.right = new Node(5);
+        roott.right.right.right = new Node(7); // Extreme right leaf
+  // System.out.println("Width of tree"+BTWidthWithoutgaps(roott));
+    System.out.println("Width of tree"+BTWidthWithGaps(roott));
 
     }
 
