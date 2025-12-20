@@ -1,0 +1,267 @@
+
+* ✅ Core Java fundamentals
+* ✅ Java needed for DSA & interviews
+* ✅ Real-world / real-time concepts interviewers expect
+* ❌ No unnecessary theory overload
+
+This roadmap assumes 2–3 hours/day.
+
+---
+
+# 🧭 What You MUST Know as a Java Beginner (Interview-Oriented)
+
+### 🔹 Core Java (Non-Negotiable)
+
+* Data types, variables
+* Operators
+* Control statements (`if`, `switch`, loops)
+* Methods & method calls
+* Arrays (1D & 2D)
+* Strings (VERY IMPORTANT)
+* `String` vs `StringBuilder` vs `StringBuffer`
+
+---
+
+### 🔹 OOPs (Extremely Important)
+
+* Class & Object
+* Encapsulation
+* Inheritance
+* Polymorphism
+* Abstraction
+* Interfaces vs Abstract classes
+* `this` and `super`
+* Method overloading vs overriding
+
+---
+
+### 🔹 Java for DSA
+
+* Recursion
+* Collections Framework
+* `ArrayList`, `HashMap`, `HashSet`
+* Stack, Queue (using Java)
+* Comparable vs Comparator
+
+---
+
+### 🔹 Real-Time Java Concepts (Interview Gold ⭐)
+
+* Memory (Stack vs Heap)
+* JVM, JRE, JDK
+* Garbage Collection (basics)
+* Exception Handling
+* Multithreading (basics only)
+* Immutability
+* `equals()` vs `==`
+* `hashCode()`
+
+---
+
+# 📅 15-Day Java Roadmap (Beginner → Interview Ready)
+
+---
+
+## 🗓️ Day 1 – Java Basics
+
+* What is Java?
+* JDK, JRE, JVM
+* Variables & data types
+* Type casting
+
+🧠 Real-time:
+
+* Why Java is platform independent
+
+✍️ Practice:
+
+* Write simple programs (add, swap, prime)
+
+---
+
+## 🗓️ Day 2 – Control Statements
+
+* `if`, `if-else`, `switch`
+* `for`, `while`, `do-while`
+* `break`, `continue`
+
+🧠 Real-time:
+
+* Loop vs recursion use cases
+
+---
+
+## 🗓️ Day 3 – Methods & Arrays
+
+* Methods (parameters, return types)
+* Method overloading
+* Arrays (1D & 2D)
+
+🧠 Real-time:
+
+* Why arrays are fixed size
+
+---
+
+## 🗓️ Day 4 – Strings (VERY IMPORTANT)
+
+* `String` class
+* String pool
+* `StringBuilder` & `StringBuffer`
+
+🧠 Real-time:
+
+* Why `String` is immutable
+
+---
+
+## 🗓️ Day 5 – OOPs Basics
+
+* Class & Object
+* Encapsulation
+* `this` keyword
+
+🧠 Real-time:
+
+* Encapsulation in banking apps
+
+---
+
+## 🗓️ Day 6 – Inheritance & Polymorphism
+
+* Inheritance
+* Method overriding
+* `super` keyword
+* Runtime polymorphism
+
+🧠 Real-time:
+
+* Parent-child relationship in systems
+
+---
+
+## 🗓️ Day 7 – Abstraction
+
+* Abstract class
+* Interface
+* Interface vs abstract class
+
+🧠 Real-time:
+
+* Payment gateway example
+
+---
+
+## 🗓️ Day 8 – Exception Handling
+
+* `try`, `catch`, `finally`
+* Checked vs unchecked exceptions
+* `throw` vs `throws`
+
+🧠 Real-time:
+
+* Handling invalid user inputs
+
+---
+
+## 🗓️ Day 9 – Collections Framework
+
+* `List`, `Set`, `Map`
+* `ArrayList`, `HashSet`, `HashMap`
+
+🧠 Real-time:
+
+* Why `HashMap` is fast
+
+---
+
+## 🗓️ Day 10 – Stack & Queue (Java)
+
+* Stack using `Stack` class
+* Queue using `LinkedList`
+* PriorityQueue (basics)
+
+🧠 Real-time:
+
+* Undo/Redo, Task scheduling
+
+---
+
+## 🗓️ Day 11 – Comparable & Comparator
+
+* Sorting objects
+* Custom sorting logic
+
+🧠 Real-time:
+
+* Sorting employees by salary/name
+
+---
+
+## 🗓️ Day 12 – Recursion
+
+* Base case
+* Recursive tree problems
+* Stack overflow concept
+
+🧠 Real-time:
+
+* Folder traversal
+
+---
+
+## 🗓️ Day 13 – Memory Management
+
+* Stack vs Heap
+* Object lifecycle
+* Garbage Collection
+
+🧠 Real-time:
+
+* Memory leaks
+
+---
+
+## 🗓️ Day 14 – Multithreading (Basics)
+
+* Thread vs Runnable
+* Lifecycle of thread
+* Synchronization (concept)
+
+🧠 Real-time:
+
+* Multiple users in web app
+
+---
+
+## 🗓️ Day 15 – Interview Revision Day
+
+* Revise all concepts
+* Write code without IDE
+* Explain answers aloud
+
+🧠 Focus:
+
+* Why Java?
+* OOPs explanations
+* Collections internals
+
+---
+
+# 🎯 What You’ll Be Ready For After This
+
+✔ Java coding interviews
+✔ DSA using Java
+✔ Product-based company screening rounds
+✔ Confident explanation of real-time concepts
+
+---
+
+## 🔥 Next Steps (Highly Recommended)
+
+After this:
+
+1. Start DSA in Java (Arrays → Strings → Trees → Graphs)
+2. Solve LeetCode Easy → Medium
+3. Practice explaining code verbally
+

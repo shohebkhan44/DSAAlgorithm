@@ -3,6 +3,8 @@ package TreesDSA;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import javax.swing.tree.TreeNode;
+
 class Node {
     int value;
     Node left;
@@ -488,8 +490,107 @@ public static boolean printRootToNodePath(Node root, int target) {
 }
 
 
- 
+ //LCA using recursion
 
+
+    // Function to find LCA of two nodes in a Binary Tree
+    public static Node lowestCommonAncestor(Node root, Node p, Node q) {
+
+        // Base case: if tree is empty, return null
+        if (root == null) {
+            return null;
+        }
+
+        // If current node is either p or q, return current node
+        if (root == p || root == q) {
+            return root;
+        }
+
+        // Recursively find LCA in left subtree
+        Node left = lowestCommonAncestor(root.left, p, q);
+
+        // Recursively find LCA in right subtree
+        Node right = lowestCommonAncestor(root.right, p, q);
+
+        // If both left and right are not null,
+        // it means p and q are found in different subtrees
+        // so current node is the LCA
+        if (left != null && right != null) {
+            return root;
+        }
+
+        // If only one side is non-null, return that side
+        // (it contains both p and q or one of them)
+        return (left != null) ? left : right;
+    }
+
+
+//total Number Nodes in A Complete BT
+
+
+
+
+    // Function to count nodes in a complete binary tree
+    public int countNodes(Node root) {
+
+        // If tree is empty, return 0
+        if (root == null) {
+            return 0;
+        }
+
+        // Find height of left subtree
+        int leftHeight = getLeftHeight(root);
+
+        // Find height of right subtree
+        int rightHeight = getRightHeight(root);
+
+        // If left and right heights are same,
+        // then this is a perfect binary tree
+        if (leftHeight == rightHeight) {
+            // Number of nodes in perfect tree = 2^height - 1
+            return (int) Math.pow(2, leftHeight) - 1;
+        }
+
+        // Otherwise, count nodes recursively
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+
+    // Function to get height by going left
+    private int getLeftHeight(Node node) {
+        int height = 0;
+        while (node != null) {
+            height++;
+            node = node.left;
+        }
+
+        return height;
+    }
+
+    // Function to get height by going right
+    private int getRightHeight(Node node) {
+        int height = 0;
+        while (node != null) {
+            height++;
+            node = node.right;
+        }
+        return height;
+    }
+
+
+
+    //Count leaf Nodes
+
+    public static int countLeafNodes(Node root){
+
+   if(root==null){
+    return 0;
+   }
+          if(root.left!=null){
+           int count;
+          }
+   return countLeafNodes(root.left) +countLeafNodes(root.right);
+
+    }
 
     // Main method
    
@@ -565,6 +666,8 @@ public static boolean printRootToNodePath(Node root, int target) {
         roott.right.right.right = new Node(7); // Extreme right leaf
   // System.out.println("Width of tree"+BTWidthWithoutgaps(roott));
     System.out.println("Width of tree"+BTWidthWithGaps(roott));
+    Node res=lowestCommonAncestor(root,root.right.left,root.right.right);
+    System.out.println("LCA"+res.value);
 
     }
 

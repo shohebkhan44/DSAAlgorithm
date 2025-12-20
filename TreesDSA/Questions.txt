@@ -1,0 +1,239 @@
+Great choice 👍 Trees are very high-priority for product-based companies.
+
+Below is a company-tier–wise + concept-wise list of the most frequently asked Tree DSA questions, based on patterns commonly seen in Tier-1, Tier-2, and Tier-3 companies.
+
+---
+
+## 🌳 CORE TREE QUESTIONS (Asked in ALL TIERS)
+
+These are must-do questions.
+
+ 1. Tree Traversals
+
+* Inorder Traversal
+* Preorder Traversal
+* Postorder Traversal
+* Level Order Traversal (BFS)
+* Zigzag / Spiral Traversal
+
+👉 Companies: All tiers
+👉 Tip: Be comfortable with both recursive and iterative versions.
+
+---
+
+ 2. Height / Depth of a Binary Tree
+
+* Maximum Depth of Binary Tree
+* Minimum Depth of Binary Tree
+
+👉 Companies: Tier 1, 2, 3
+👉 Concept: Recursion + DFS
+
+---
+
+ 3. Count Nodes Problems
+
+* Count total nodes
+* Count leaf nodes
+* Count nodes in a complete binary tree
+
+👉 Companies: Tier 2, 3
+
+---
+
+## 🌲 BINARY TREE PROBLEMS (VERY IMPORTANT)
+
+ 4. Diameter of Binary Tree
+
+* Longest path between any two nodes
+
+👉 Companies: Amazon, Microsoft, Flipkart, Adobe
+👉 Concept: Height + recursion optimization
+
+---
+
+ 5. Check if Tree is Balanced
+
+* Height Balanced Binary Tree
+
+👉 Companies: Tier 1 & 2
+👉 Concept: Bottom-up recursion
+
+---
+
+ 6. Identical / Symmetric Trees
+
+* Check if two trees are identical
+* Symmetric Tree (Mirror Tree)
+
+👉 Companies: Google, Amazon, Infosys, Wipro
+
+---
+
+ 7. Lowest Common Ancestor (LCA)
+
+* LCA in Binary Tree
+* LCA in BST
+
+👉 Companies: Tier 1 (VERY IMPORTANT)
+
+---
+
+ 8. Maximum Path Sum
+
+* Maximum path sum between any nodes
+* Maximum root-to-leaf path sum
+
+👉 Companies: Amazon, Google, Microsoft
+👉 Difficulty: Medium–Hard
+
+---
+
+## 🌳 BINARY SEARCH TREE (BST) QUESTIONS
+
+ 9. Validate Binary Search Tree
+
+👉 Companies: Tier 1 & 2
+
+---
+
+ 10. Insert / Delete in BST
+
+👉 Companies: Tier 2 & 3
+
+---
+
+ 11. Kth Smallest / Largest Element in BST
+
+👉 Companies: Amazon, Adobe, Paytm
+
+---
+
+ 12. Floor and Ceil in BST
+
+👉 Companies: Tier 2, 3
+
+---
+
+## 🌲 ADVANCED TREE QUESTIONS (Mostly Tier-1)
+
+ 13. Construct Tree from Traversals
+
+* From Inorder + Preorder
+* From Inorder + Postorder
+
+👉 Companies: Google, Amazon
+
+---
+
+ 14. Vertical / Top / Bottom View
+
+* Vertical Order Traversal
+* Top View
+* Bottom View
+
+👉 Companies: Amazon, Microsoft
+
+---
+
+ 15. Boundary Traversal
+
+👉 Companies: Tier 1 & 2
+
+---
+
+ 16. Serialize and Deserialize Binary Tree
+
+👉 Companies: Google, Amazon, Facebook
+👉 Very High Value Question
+
+---
+
+ 17. Burning Tree Problem
+
+* Time to burn binary tree from a given node
+
+👉 Companies: Amazon, Flipkart
+
+---
+
+## 🌴 TRENDING INTERVIEW QUESTIONS
+
+ 18. Morris Traversal
+
+* Inorder traversal without recursion & stack
+
+👉 Companies: Tier 1 (Bonus edge case)
+
+---
+
+ 19. Flatten Binary Tree to Linked List
+
+👉 Companies: Amazon, Microsoft
+
+---
+
+ 20. Path Sum Problems
+
+* Root-to-leaf path sum
+* All paths with given sum
+
+👉 Companies: Tier 1 & 2
+
+---
+
+## 📌 TIER-WISE FOCUS STRATEGY
+
+ ✅ Tier-3 (Service / Entry Level)
+
+Focus on:
+
+* Traversals
+* Height
+* Count nodes
+* Basic BST operations
+
+---
+
+ ✅ Tier-2 (Product / Mid-Level)
+
+Add:
+
+* Diameter
+* Balanced Tree
+* LCA
+* Views of tree
+* Kth smallest in BST
+
+---
+
+ ✅ Tier-1 (Top Product Companies)
+
+Master:
+
+* Serialize/Deserialize
+* Construct tree
+* Maximum path sum
+* Advanced DFS/BFS patterns
+* Optimization (O(n))
+
+---
+
+## 🔥 How to Study Trees Efficiently
+
+1. Understand recursion clearly
+2. Draw tree diagrams while solving
+3. Solve 1–2 questions daily
+4. Write code without looking after practice
+5. Focus on edge cases
+
+---
+
+If you want, I can:
+
+* Give you a 15-day Trees study plan
+* Provide LeetCode/GFG problem links
+* Explain any one question step-by-step
+* Help you move next to BST → Heaps → Graphs
+
+Just tell me 👍
