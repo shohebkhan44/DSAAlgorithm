@@ -294,6 +294,8 @@ public class TreesIntroduction {
 
     }
 
+  //Zigzag Traversal
+
     public static void ZigZagTraversal(Node root) {
         if (root == null)
             return;
@@ -326,12 +328,12 @@ public class TreesIntroduction {
             LeftToRight=!LeftToRight;
 
         }
-
-
-
     }
 
     //Boundry traversal
+
+
+
 
 
     // Function to print boundary traversal
@@ -394,7 +396,8 @@ public class TreesIntroduction {
             System.out.print(node.value + " ");
         }
         // Do nothing if it's a leaf node
-    }
+    } 
+    
 
     public static boolean isMirror(Node left, Node right) {
 
@@ -650,6 +653,7 @@ public static boolean printRootToNodePath(Node root, int target) {
         q.right = new Node(3);
 
         System.out.println(IsTreeSame(p, q));
+        System.out.println("Zizgzag traversal");
    ZigZagTraversal(root);
    System.out.println();
    boundaryTraversal(root);
