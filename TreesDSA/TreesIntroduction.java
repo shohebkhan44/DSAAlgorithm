@@ -555,6 +555,7 @@ public static boolean printRootToNodePath(Node root, int target) {
         }
 
         // Otherwise, count nodes recursively
+
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
@@ -565,7 +566,6 @@ public static boolean printRootToNodePath(Node root, int target) {
             height++;
             node = node.left;
         }
-
         return height;
     }
 
@@ -588,13 +588,40 @@ public static boolean printRootToNodePath(Node root, int target) {
    if(root==null){
     return 0;
    }
-          if(root.left!=null){
-           int count;
-          }
+   
+   if (root.left == null && root.right == null) {
+        return 1;
+    }
    return countLeafNodes(root.left) +countLeafNodes(root.right);
 
     }
 
+
+    //Construct Binary Tree from Inorder and Preorder
+    public static Node BuildTree(int[] preorder, int[] inorder,int start,int end){
+        int BuildTreePreIndex=0;
+        if(start>end){
+            return null;
+        }
+        // first element in preorder is root
+        int rootValue=preorder[BuildTreePreIndex++];
+        Node root=new Node(rootValue);
+
+        // find root in inorder
+        int rootIndex=-1;
+        for(int i=start;i<=end;i++){
+            if(inorder[i]==rootValue){
+                rootIndex=i;
+                break;
+            }
+        }
+
+        // build left and right subtrees
+        root.left=BuildTree(preorder,inorder,start,rootIndex-1);
+        root.right=BuildTree(preorder,inorder,rootIndex+1,end);
+
+        return root;
+    }   
     // Main method
    
 
