@@ -294,7 +294,7 @@ public class TreesIntroduction {
 
     }
 
-  //Zigzag Traversal
+    // Zigzag Traversal
 
     public static void ZigZagTraversal(Node root) {
         if (root == null)
@@ -305,39 +305,34 @@ public class TreesIntroduction {
         while (!que.isEmpty()) {
             int size = que.size();
             int[] level = new int[size];
-            
 
             for (int i = 0; i < size; i++) {
-               Node current = que.poll();
-              int  index = LeftToRight ? i : size - 1 - i;
-               level[index]=current.value;
+                Node current = que.poll();
+                int index = LeftToRight ? i : size - 1 - i;
+                level[index] = current.value;
 
-                if(current.left!=null){
+                if (current.left != null) {
                     que.add(current.left);
                 }
 
-                 if(current.right!=null){
+                if (current.right != null) {
                     que.add(current.right);
                 }
 
             }
             for (int val : level) {
-                System.out.print(" "+val);
+                System.out.print(" " + val);
             }
 
-            LeftToRight=!LeftToRight;
+            LeftToRight = !LeftToRight;
 
         }
     }
 
-    //Boundry traversal
-
-
-
-
+    // Boundry traversal
 
     // Function to print boundary traversal
-   public static void boundaryTraversal(Node root) {
+    public static void boundaryTraversal(Node root) {
         if (root == null)
             return;
 
@@ -356,7 +351,7 @@ public class TreesIntroduction {
     }
 
     // Function to print left boundary
-   public static void printLeftBoundary(Node node) {
+    public static void printLeftBoundary(Node node) {
         if (node == null)
             return;
 
@@ -371,7 +366,7 @@ public class TreesIntroduction {
     }
 
     // Function to print leaf nodes
-   public static void printLeaves(Node node) {
+    public static void printLeaves(Node node) {
         if (node == null)
             return;
 
@@ -384,7 +379,7 @@ public class TreesIntroduction {
     }
 
     // Function to print right boundary
-   public static void printRightBoundary(Node node) {
+    public static void printRightBoundary(Node node) {
         if (node == null)
             return;
 
@@ -396,105 +391,103 @@ public class TreesIntroduction {
             System.out.print(node.value + " ");
         }
         // Do nothing if it's a leaf node
-    } 
-    
+    }
 
     public static boolean isMirror(Node left, Node right) {
 
-    // If both nodes are null, they are symmetric
-    if (left == null && right == null)
-        return true;
+        // If both nodes are null, they are symmetric
+        if (left == null && right == null)
+            return true;
 
-    // If one is null and other is not, not symmetric
-    if (left == null || right == null)
-        return false;
+        // If one is null and other is not, not symmetric
+        if (left == null || right == null)
+            return false;
 
-    // Check value and recursive mirror condition
-    return (left.value == right.value)
-            && isMirror(left.left, right.right)
-            && isMirror(left.right, right.left);
-}
-public static boolean isSymmetric(Node root) {
-
-    // If tree is empty, it is symmetric
-    if (root == null)
-        return true;
-
-    // Check if left and right subtrees are mirror images
-    return isMirror(root.left, root.right);
-}
-
-//root to node path
-
-public static boolean printRootToNodePath(Node root, int target) {
-
-    // If tree is empty, path does not exist
-    if (root == null)
-        return false;
-
-    // Print current node value
-    System.out.print(root.value + " ");
-
-    // If current node is target, path is found
-    if (root.value == target)
-        return true;
-
-    // Check left subtree
-    if (printRootToNodePath(root.left, target))
-        return true;
-
-    // Check right subtree
-    if (printRootToNodePath(root.right, target))
-        return true;
-
-    // If not found in both subtrees, remove current node from path
-    System.out.print("\b\b"); // removes last printed value (visual purpose)
-    return false;
-}
-
-//Width of a Binary
-
-  private static int BTWidthWithGaps(Node root) {
-    if (root == null)
-        return 0;
-
-    Queue<Object[]> que = new LinkedList<>();
-    que.add(new Object[]{root, 1L}); // root index = 1
-    int maxWidth = 0;
-
-    while (!que.isEmpty()) {
-        int size = que.size();
-
-        // First node index at this level
-        long first = (long) que.peek()[1];
-        long last = 0;
-
-        for (int i = 0; i < size; i++) {
-            Object[] current = que.poll();
-            Node node = (Node) current[0];
-            long index = (long) current[1];
-
-            // Normalize index to avoid large numbers
-            long normalizedIndex = index - first;
-            last = normalizedIndex;
-
-            // Add children with normalized indices
-            if (node.left != null)
-                que.add(new Object[]{node.left, 2 * normalizedIndex});
-            if (node.right != null)
-                que.add(new Object[]{node.right, 2 * normalizedIndex + 1});
-        }
-
-        // Width of this level
-        maxWidth = Math.max(maxWidth, (int) (last + 1));
+        // Check value and recursive mirror condition
+        return (left.value == right.value)
+                && isMirror(left.left, right.right)
+                && isMirror(left.right, right.left);
     }
 
-    return maxWidth;
-}
+    public static boolean isSymmetric(Node root) {
 
+        // If tree is empty, it is symmetric
+        if (root == null)
+            return true;
 
- //LCA using recursion
+        // Check if left and right subtrees are mirror images
+        return isMirror(root.left, root.right);
+    }
 
+    // root to node path
+
+    public static boolean printRootToNodePath(Node root, int target) {
+
+        // If tree is empty, path does not exist
+        if (root == null)
+            return false;
+
+        // Print current node value
+        System.out.print(root.value + " ");
+
+        // If current node is target, path is found
+        if (root.value == target)
+            return true;
+
+        // Check left subtree
+        if (printRootToNodePath(root.left, target))
+            return true;
+
+        // Check right subtree
+        if (printRootToNodePath(root.right, target))
+            return true;
+
+        // If not found in both subtrees, remove current node from path
+        System.out.print("\b\b"); // removes last printed value (visual purpose)
+        return false;
+    }
+
+    // Width of a Binary
+
+    private static int BTWidthWithGaps(Node root) {
+        if (root == null)
+            return 0;
+
+        Queue<Object[]> que = new LinkedList<>();
+        que.add(new Object[] { root, 1L }); // root index = 1
+        int maxWidth = 0;
+
+        while (!que.isEmpty()) {
+            int size = que.size();
+
+            // First node index at this level
+            long first = (long) que.peek()[1];
+            long last = 0;
+
+            for (int i = 0; i < size; i++) {
+                Object[] current = que.poll();
+                Node node = (Node) current[0];
+                long index = (long) current[1];
+
+                // Normalize index to avoid large numbers
+                long normalizedIndex = index - first;
+                last = normalizedIndex;
+
+                // Add children with normalized indices
+                if (node.left != null)
+                    que.add(new Object[] { node.left, 2 * normalizedIndex });
+                if (node.right != null)
+                    que.add(new Object[] { node.right, 2 * normalizedIndex + 1 });
+            }
+
+            // Width of this level
+            maxWidth = Math.max(maxWidth, (int) (last + 1));
+        }
+
+        return maxWidth;
+    }
+
+    // LCA using recursion
 
     // Function to find LCA of two nodes in a Binary Tree
     public static Node lowestCommonAncestor(Node root, Node p, Node q) {
@@ -527,11 +520,7 @@ public static boolean printRootToNodePath(Node root, int target) {
         return (left != null) ? left : right;
     }
 
-
-//total Number Nodes in A Complete BT
-
-
-
+    // total Number Nodes in A Complete BT
 
     // Function to count nodes in a complete binary tree
     public int countNodes(Node root) {
@@ -579,53 +568,110 @@ public static boolean printRootToNodePath(Node root, int target) {
         return height;
     }
 
+    // Count leaf Nodes
 
+    public static int countLeafNodes(Node root) {
 
-    //Count leaf Nodes
+        if (root == null) {
+            return 0;
+        }
 
-    public static int countLeafNodes(Node root){
-
-   if(root==null){
-    return 0;
-   }
-   
-   if (root.left == null && root.right == null) {
-        return 1;
-    }
-   return countLeafNodes(root.left) +countLeafNodes(root.right);
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        return countLeafNodes(root.left) + countLeafNodes(root.right);
 
     }
 
-
-    //Construct Binary Tree from Inorder and Preorder
-    public static Node BuildTree(int[] preorder, int[] inorder,int start,int end){
-        int BuildTreePreIndex=0;
-        if(start>end){
+    // Construct Binary Tree from Inorder and Preorder
+    public static Node BuildTree(int[] preorder, int[] inorder, int start, int end) {
+        int BuildTreePreIndex = 0;
+        if (start > end) {
             return null;
         }
         // first element in preorder is root
-        int rootValue=preorder[BuildTreePreIndex++];
-        Node root=new Node(rootValue);
+        int rootValue = preorder[BuildTreePreIndex++];
+        Node root = new Node(rootValue);
 
         // find root in inorder
-        int rootIndex=-1;
-        for(int i=start;i<=end;i++){
-            if(inorder[i]==rootValue){
-                rootIndex=i;
+        int rootIndex = -1;
+        for (int i = start; i <= end; i++) {
+            if (inorder[i] == rootValue) {
+                rootIndex = i;
                 break;
             }
         }
 
         // build left and right subtrees
-        root.left=BuildTree(preorder,inorder,start,rootIndex-1);
-        root.right=BuildTree(preorder,inorder,rootIndex+1,end);
+        root.left = BuildTree(preorder, inorder, start, rootIndex - 1);
+        root.right = BuildTree(preorder, inorder, rootIndex + 1, end);
 
         return root;
-    }   
-    // Main method
-   
+    }
 
-    
+    // serialize and Deserialize BT
+
+    public static String serialize(Node root) {
+
+        if (root == null) {
+            return "";
+        }
+        Queue<Node> que = new LinkedList<>();
+        StringBuilder str = new StringBuilder();
+        que.add(root);
+        while (!que.isEmpty()) {
+            Node node = que.poll();
+            if (node == null) {
+                str.append('n');
+                continue;
+            }
+            str.append(node.value + " ");
+            que.add(node.left);
+            que.add(node.right);
+        }
+        return str.toString();
+
+    }
+
+    //de-serialize
+
+       // Deserialize the Binary Tree
+    public static Node deserialize(String str) {
+        if (str == "") return null;
+
+        Queue<Node> que = new LinkedList<>();
+        String[] values = str.split(" ");
+        
+        // Create the root node from the first value
+        Node root = new Node(Integer.parseInt(values[0]));
+        que.add(root);
+        
+        int i = 1;  // start with the second element
+        while (i < values.length) {
+            Node parent = que.poll();
+            
+            // Left child
+            if (!values[i].equals("n")) {
+                Node left = new Node(Integer.parseInt(values[i]));
+                parent.left = left;
+                que.add(left);
+            }
+            i++;
+
+            // Right child
+            if (i < values.length && !values[i].equals("n")) {
+                Node right = new Node(Integer.parseInt(values[i]));
+                parent.right = right;
+                que.add(right);
+            }
+            i++;
+        }
+        
+        return root;
+    }
+
+    // Main method
+
     public static void main(String[] args) {
         System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithms.");
 
@@ -681,24 +727,23 @@ public static boolean printRootToNodePath(Node root, int target) {
 
         System.out.println(IsTreeSame(p, q));
         System.out.println("Zizgzag traversal");
-   ZigZagTraversal(root);
-   System.out.println();
-   boundaryTraversal(root);
+        ZigZagTraversal(root);
+        System.out.println();
+        boundaryTraversal(root);
 
-
-    Node roott = new Node(1);
-     roott.left = new Node(2);
+        Node roott = new Node(1);
+        roott.left = new Node(2);
         roott.left.left = new Node(4);
-        roott.left.left.left = new Node(6);   // Extreme left leaf
+        roott.left.left.left = new Node(6); // Extreme left leaf
 
         // Right side chain
         roott.right = new Node(3);
         roott.right.right = new Node(5);
         roott.right.right.right = new Node(7); // Extreme right leaf
-  // System.out.println("Width of tree"+BTWidthWithoutgaps(roott));
-    System.out.println("Width of tree"+BTWidthWithGaps(roott));
-    Node res=lowestCommonAncestor(root,root.right.left,root.right.right);
-    System.out.println("LCA"+res.value);
+        // System.out.println("Width of tree"+BTWidthWithoutgaps(roott));
+        System.out.println("Width of tree" + BTWidthWithGaps(roott));
+        Node res = lowestCommonAncestor(root, root.right.left, root.right.right);
+        System.out.println("LCA" + res.value);
 
     }
 
