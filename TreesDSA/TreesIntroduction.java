@@ -369,6 +369,7 @@ public class TreesIntroduction {
     public static void printLeaves(Node node) {
         if (node == null)
             return;
+        
 
         printLeaves(node.left);
 
