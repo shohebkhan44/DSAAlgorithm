@@ -229,7 +229,10 @@ public class TreesIntroduction {
         }
         int lh = MaxmimumDepth(root.left);
         int rh = MaxmimumDepth(root.right);
-        if (Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right)) {
+//         A tree is balanced if:
+// The height of the left side and right side differ by at most 1
+// AND both left and right subtrees are also balanced
+         if (Math.abs(lh - rh) <= 1 && isBalanced(root.left) && isBalanced(root.right)) {
             return true;
         }
         return false;
