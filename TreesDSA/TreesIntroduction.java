@@ -677,7 +677,7 @@ public class TreesIntroduction {
     // Main method
 
     public static void main(String[] args) {
-        System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithms.");
+        System.out.println("Thi class provides an introduction to Trees \n in Data Structures and Algorithmss.");
 
         Node root = new Node(1);
         root.left = new Node(2);
