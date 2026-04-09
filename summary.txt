@@ -1,0 +1,26 @@
+ Project Role : Custom Software Engineer
+Project Role Description : Develop custom software solutions to design, code, and enhance components across systems or applications. Use modern frameworks and agile practices to deliver scalable, high-performing solutions tailored to specific business needs.
+Must have skills : Java Full Stack Development
+
+
+
+Summary: As an Application Developer, you will engage in the design, construction, and
+ configuration of applications tailored to fulfill specific business processes and application
+  requirements. Your typical day will involve collaborating with team members to understand 
+  project needs, developing innovative solutions, and ensuring that applications are built 
+  to the highest standards of quality and functionality. You will also participate in 
+  discussions to refine project goals and contribute to the overall success of the team.
+   Roles & Responsibilities: - Expected to perform independently and become an SME. -
+    Required active participation/contribution in team discussions. - Contribute in 
+    providing solutions to work related problems. - Assist in the documentation of 
+    application specifications and requirements. - Engage in code reviews to ensure 
+    adherence to best practices and standards. Professional & Technical Skills: -
+     Must To Have Skills: Proficiency in Java Full Stack Development. - Good To 
+     Have Skills: Experience with modern front-end frameworks such as Angular or React. - 
+     Strong understanding of RESTful services and API integration. - Familiarity with database
+      management systems, including SQL and NoSQL databases. - Experience in version control 
+      systems, particularly Git. Additional Information: - The candidate should 
+      have minimum 3 years of experience in Java Full Stack Development. - 
+      This position is based at our Bengaluru office. - A 15 years full time education is required.
+
+     

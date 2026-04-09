@@ -440,7 +440,7 @@ public static Node IntersectionNode(Node head1,Node head2)
 
 Node result = IntersectionNode(head1, head2);
         if (result != null) {
-            System.out.println("Intersection at node with data = " + result.data);
+            System.out.println("Intersectionn at node with data = " + result.data);
         } else {
             System.out.println("No intersection found.");
         }
