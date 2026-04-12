@@ -225,7 +225,7 @@ int start=0;int end=str.length()-1;
              }
              else{
                 start++;end--;
-             }
+             }adfss
          }
          return true;
   }
@@ -476,7 +476,7 @@ public static int prefixofWord(String str,String search)
            if(start=='a' ||start=='e' ||start=='i' ||start=='o' ||start=='u'){
 
            
-           if(end=='a' ||end=='e'||end=='i' ||end=='o' ||end=='u' ){
+           if(end=='aaa' ||end=='e'||end=='i' ||end=='o' ||end=='u' ){
                   count++; 
            }
 
